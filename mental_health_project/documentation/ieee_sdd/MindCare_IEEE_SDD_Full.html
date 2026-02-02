@@ -1,0 +1,3352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>MindCare_IEEE_SDD_Original</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+      body {
+          font-family: 'Inter', sans-serif;
+          line-height: 1.6;
+          max-width: 900px;
+          margin: 40px auto;
+          padding: 0 20px;
+          color: #333;
+      }
+
+      pre.mermaid {
+          background: transparent;
+          border: none;
+      }
+
+      h1,
+      h2,
+      h3 {
+          color: #2c3e50;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 10px;
+      }
+
+      hr {
+          border: 0;
+          border-top: 2px solid #eee;
+          margin: 40px 0;
+      }
+
+      img {
+          max-width: 100%;
+          height: auto;
+      }
+  </style>
+</head>
+<body>
+<h1 id="mindcare---software-design-description-ieee-1016">MindCare -
+Software Design Description (IEEE 1016)</h1>
+<p><strong>Autores:</strong> Grupo Sócrates (Rodrigo García, Samir
+Castaño, Mario Macea)<br />
+<strong>Institución:</strong> Universidad de Córdoba, Departamento de
+Ingeniería de Sistemas<br />
+—</p>
+<h1 id="ieee-1016---01.-introducción">IEEE 1016 - 01. Introducción</h1>
+<h2 id="propósito">1.1 Propósito</h2>
+<p>Este documento establece las bases del diseño del sistema
+<strong>MindCare</strong>, una solución de software orientada a la
+evaluación preventiva de salud mental mediante Inteligencia Artificial.
+El objetivo es proporcionar una guía técnica exhaustiva para el
+desarrollo, mantenimiento y evolución del sistema.</p>
+<h2 id="alcance">1.2 Alcance</h2>
+<p>MindCare es una plataforma web integral que: - Digitaliza la captura
+de datos psicométricos y demográficos. - Ejecuta modelos de Machine
+Learning (Random Forest) para la predicción de necesidades de
+tratamiento. - Proporciona analítica de datos masivos para tomadores de
+decisiones. - Gestiona identidades y roles de acceso bajo protocolos de
+seguridad web.</p>
+<h2 id="contexto-del-sistema-diagrama-de-contexto-uml">1.3 Contexto del
+Sistema (Diagrama de Contexto UML)</h2>
+<p>El sistema interactúa con dos actores principales: los Usuarios
+(encuestados) y los Administradores (investigadores).</p>
+<pre class="mermaid"><code>graph TD
+    subgraph MindCare_System [Sistema MindCare]
+        Core[Motor Web Django]
+        AI[Motor de Predicción IA]
+    end
+
+    User((Usuario)) --&gt;|Completa Encuesta| Core
+    Core --&gt;|Muestra Resultados| User
+    
+    Admin((Administrador)) --&gt;|Gestiona Usuarios| Core
+    Admin --&gt;|Consulta Estadísticas| Core
+    
+    Core &lt;--&gt; AI</code></pre>
+<h2 id="objetivos-de-diseño">1.4 Objetivos de Diseño</h2>
+<ul>
+<li><strong>Modularidad</strong>: Separación clara entre la lógica de
+negocio y la lógica de IA.</li>
+<li><strong>Fiabilidad</strong>: Resultados consistentes basados en
+modelos entrenados.</li>
+<li><strong>Privacidad</strong>: Manejo ético y seguro de datos
+sensibles de salud mental.</li>
+</ul>
+<hr />
+<h1 id="ieee-1016---02.-arquitectura-del-sistema">IEEE 1016 - 02.
+Arquitectura del Sistema</h1>
+<h2 id="patrón-arquitectónico-mvt-model-view-template">2.1 Patrón
+Arquitectónico: MVT (Model-View-Template)</h2>
+<p>MindCare implementa el patrón MVT de Django para desacoplar la
+gestión de datos, la lógica de control y la interfaz de usuario.</p>
+<h3 id="diagrama-de-arquitectura-detallado-uml-package">2.2 Diagrama de
+Arquitectura Detallado (UML Package)</h3>
+<pre class="mermaid"><code>graph TB
+    subgraph Frontend_Layer [Capa de Presentación]
+        HTML[Templates HTML5]
+        CSS[Vanilla CSS / Estilos]
+        JS[JavaScript / Chart.js]
+    end
+
+    subgraph Logic_Layer [Capa de Lógica de Negocio]
+        URLs[URL Dispatcher]
+        Views[Views / Lógica]
+        Forms[Forms / Validación]
+        Auth[Sistema de Autenticación]
+    end
+
+    subgraph AI_Engine [Capa de Inteligencia Artificial]
+        ML_Utils[Wrapper Inferencia]
+        ML_Model[Joblib / Random Forest]
+    end
+
+    subgraph Data_Layer [Capa de Datos]
+        ORM[Django ORM]
+        DB[(SQLite 3 Database)]
+    end
+
+    Frontend_Layer &lt;--&gt; URLs
+    URLs &lt;--&gt; Views
+    Views &lt;--&gt; Forms
+    Views &lt;--&gt; Templates
+    Views &lt;--&gt; Auth
+    Views &lt;--&gt; ML_Utils
+    ML_Utils &lt;--&gt; ML_Model
+    Views &lt;--&gt; ORM
+    ORM &lt;--&gt; DB</code></pre>
+<h2 id="descomposición-de-subsistemas">2.3 Descomposición de
+Subsistemas</h2>
+<ol type="1">
+<li><strong>Subsistema de Encuestas</strong>: Gestiona la lógica
+multietapa de la captura de datos.</li>
+<li><strong>Subsistema de Identidad</strong>: Basado en
+<code>django.contrib.auth</code>, maneja el control de acceso basado en
+roles (RBAC).</li>
+<li><strong>Subsistema Analítico</strong>: Procesa las respuestas
+almacenadas para generar distribuciones estadísticas a través de
+<code>Chart.js</code>.</li>
+<li><strong>Subsistema Predictivo</strong>: Componente asíncrono que
+realiza inferencias ML.</li>
+</ol>
+<h2 id="decisiones-técnicas-clave">2.4 Decisiones Técnicas Clave</h2>
+<ul>
+<li><strong>Django</strong>: Elegido por su seguridad integrada
+(Batteries included).</li>
+<li><strong>SQLite</strong>: Utilizado por su portabilidad para entornos
+de investigación.</li>
+<li><strong>Random Forest</strong>: Seleccionado por su capacidad para
+manejar datos categóricos y su interpretabilidad.</li>
+</ul>
+<hr />
+<h1 id="ieee-1016---03.-diseño-de-datos">IEEE 1016 - 03. Diseño de
+Datos</h1>
+<h2 id="esquema-lógico-diagrama-entidad-relación">3.1 Esquema Lógico
+(Diagrama Entidad-Relación)</h2>
+<p>El diseño de datos se centra en la relación entre el usuario
+corporativo y sus registros históricos de salud mental.</p>
+<pre class="mermaid"><code>erDiagram
+    USER ||--o{ SURVEY_RESPONSE : &quot;genera&quot;
+    USER {
+        int id PK
+        string username
+        string first_name
+        string last_name
+        string email
+        boolean is_superuser
+        boolean is_staff
+    }
+    SURVEY_RESPONSE {
+        int id PK
+        int user_id FK
+        string gender
+        int age
+        string country
+        string family_history
+        string treatment
+        string remote_work
+        string mental_health_consequence
+        string prediction_label
+        datetime created_at
+    }</code></pre>
+<h2 id="diccionario-de-datos-principales-campos">3.2 Diccionario de
+Datos (Principales Campos)</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Entidad</th>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>User</strong></td>
+<td style="text-align: left;"><code>username</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Identificador único para el inicio de
+sesión.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>User</strong></td>
+<td style="text-align: left;"><code>is_superuser</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">Define si tiene acceso al Panel de
+Administración.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Response</strong></td>
+<td style="text-align: left;"><code>family_history</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Factor crítico para el modelo de IA
+(Sí/No).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Response</strong></td>
+<td style="text-align: left;"><code>treatment</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Variable objetivo real (si el usuario ya
+recibe tratamiento).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Response</strong></td>
+<td style="text-align: left;"><code>prediction_label</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Resultado generado por el motor de
+inferencia IA.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="estrategia-de-persistencia">3.3 Estrategia de Persistencia</h2>
+<ul>
+<li><strong>ORM (Object-Relational Mapping)</strong>: Se utiliza el ORM
+de Django para abstraer las consultas SQL y garantizar la seguridad
+contra inyecciones SQL.</li>
+<li><strong>Migraciones</strong>: El esquema se gestiona mediante el
+sistema de migraciones de Django para asegurar la integridad estructural
+entre versiones.</li>
+<li><strong>Base de Datos</strong>: SQLite 3 configurada para
+almacenamiento local eficiente.</li>
+</ul>
+<hr />
+<h1 id="ieee-1016---04.-diseño-de-detalle-inteligencia-artificial">IEEE
+1016 - 04. Diseño de Detalle (Inteligencia Artificial)</h1>
+<h2 id="especificación-del-modelo">4.1 Especificación del Modelo</h2>
+<p>El “cerebro” de MindCare es un clasificador basado en el algoritmo
+<strong>Random Forest</strong>, entrenado con el dataset de salud mental
+en la industria tech.</p>
+<h2 id="pipeline-de-inferencia-diagrama-de-estado-uml">4.2 Pipeline de
+Inferencia (Diagrama de Estado UML)</h2>
+<p>El proceso desde que se recibe la encuesta hasta que se entrega la
+predicción.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Recepcion: Usuario envía POST
+    Recepcion --&gt; Preprocesamiento: Conversión de texto a numérico
+    Preprocesamiento --&gt; Inferencia: Carga de modelo (.joblib)
+    Inferencia --&gt; Generacion_Etiqueta: Aplicar predicción
+    Generacion_Etiqueta --&gt; Almacenamiento: Guardar en DB
+    Almacenamiento --&gt; Despliegue: Mostrar en Results.html
+    Despliegue --&gt; [*]</code></pre>
+<h2 id="diagrama-de-secuencia-de-predicción-uml-sequence">4.3 Diagrama
+de Secuencia de Predicción (UML Sequence)</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    actor U as Usuario
+    participant V as View (survey)
+    participant M as ML Utils (inference)
+    participant DB as SQLite DB
+
+    U-&gt;&gt;V: Envía respuestas formulario
+    V-&gt;&gt;V: Valida integridad de datos (Forms)
+    V-&gt;&gt;M: Enviar datos para predicción
+    M-&gt;&gt;M: Codificar variables (One-Hot)
+    M-&gt;&gt;M: Ejecutar Clasificación (RF)
+    M--&gt;&gt;V: Retorna Recomendación (Tratamiento/No)
+    V-&gt;&gt;DB: Almacena respuesta y predicción
+    V--&gt;&gt;U: Redirige a página de resultados</code></pre>
+<h2 id="características-del-modelo">4.4 Características del Modelo</h2>
+<ul>
+<li><strong>Variables de entrada</strong>: 16 variables categóricas y
+numéricas.</li>
+<li><strong>Tipo de aprendizaje</strong>: Supervisado (Clasificación
+binaria).</li>
+<li><strong>Herramientas</strong>: Scikit-Learn, Joblib, NumPy,
+Pandas.</li>
+<li><strong>Interpretabilidad</strong>: El uso de Random Forest permite
+extraer la importancia de las características (Feature Importance), lo
+cual es crucial para la ética en salud mental.</li>
+</ul>
+<hr />
+<h1 id="ieee-1016---05.-diseño-de-interfaces-uiux">IEEE 1016 - 05.
+Diseño de Interfaces (UI/UX)</h1>
+<h2 id="arquitectura-de-la-información-sitemap">5.1 Arquitectura de la
+Información (Sitemap)</h2>
+<pre class="mermaid"><code>graph TD
+    Home[Inicio / Landing] --&gt; Login[Modal Login]
+    Home --&gt; Register[Modal Registro]
+    Home --&gt; Authors[Página Autores]
+    
+    subgraph Protected_Zone [Zona Protegida]
+        View_Survey[Formulario Encuesta] --&gt; Results[Resultados IA]
+        History[Historial de Evaluaciones]
+        Dashboard[Admin: Estadísticas Globales]
+        UserMgmt[Admin: Gestión Usuarios]
+    end
+
+    Login --&gt; View_Survey
+    Login --&gt; Dashboard</code></pre>
+<h2 id="diseño-de-componentes-de-interfaz">5.2 Diseño de Componentes de
+Interfaz</h2>
+<ul>
+<li><strong>Navegación Dinámica</strong>: El encabezado cambia según el
+rol del usuario (Admin vs Usuario Final).</li>
+<li><strong>Formulario Multietapa con Ayuda Contextual</strong>:
+Implementación JavaScript para navegación suave entre pasos de la
+encuesta.</li>
+<li><strong>Gráficos Estadísticos</strong>: Integración de
+<strong>Chart.js</strong> para renderizar distribuciones de datos en el
+Dashboard.</li>
+</ul>
+<h2 id="interfaces-externas">5.3 Interfaces Externas</h2>
+<ul>
+<li><strong>Navegadores</strong>: Optimizado para Chrome, Firefox y
+Safari.</li>
+<li><strong>Protocolo de Comunicación</strong>: HTTP/HTTPS con
+respuestas en formato JSON para endpoints de gestión de usuarios
+(AJAX).</li>
+<li><strong>Framework de Estilo</strong>: Vanilla CSS con variables CSS
+personalizadas para mantener una estética consistente (Glassmorphism,
+Modo Oscuro/Laro equilibrado).</li>
+</ul>
+<h2 id="flujo-de-navegación-del-usuario-uml-activity">5.4 Flujo de
+Navegación del Usuario (UML Activity)</h2>
+<pre class="mermaid"><code>flowchart TD
+    Start([Inicio]) --&gt; Visit[Llega a MindCare]
+    Visit --&gt; Auth{¿Está autenticado?}
+    Auth -- No --&gt; Guest[Ver Autores o Iniciar Sesión]
+    Auth -- Sí --&gt; Role{¿Es Administrador?}
+    Role -- Sí --&gt; Admin[Ir a Dashboard Analítico]
+    Admin --&gt; Manage[Gestionar Usuarios]
+    Role -- No --&gt; Survey[Realizar Encuesta de Salud]
+    Survey --&gt; Result[Ver Recomendación IA]
+    Guest --&gt; Stop([Fin])
+    Manage --&gt; Stop
+    Result --&gt; Stop</code></pre>
+<hr />
+<h1 id="ieee-1016---06.-gestión-de-usuarios-y-seguridad">IEEE 1016 - 06.
+Gestión de Usuarios y Seguridad</h1>
+<h2 id="control-de-acceso-basado-en-roles-rbac">6.1 Control de Acceso
+Basado en Roles (RBAC)</h2>
+<p>MindCare implementa una estructura jerárquica de permisos.</p>
+<pre class="mermaid"><code>graph LR
+    subgraph Roles
+        Admin[Administrador / Superuser]
+        StdUser[Usuario Estándar]
+    end
+
+    subgraph Permisos
+        P1[Realizar Encuesta]
+        P2[Ver Historial Propio]
+        P3[Ver Panel Admin]
+        P4[Editar Roles de Usuarios]
+        P5[Eliminar/Modificar Datos]
+    end
+
+    StdUser --&gt; P1
+    StdUser --&gt; P2
+    Admin --&gt; P1
+    Admin --&gt; P2
+    Admin --&gt; P3
+    Admin --&gt; P4
+    Admin --&gt; P5</code></pre>
+<h2 id="protocolos-de-seguridad-implementados">6.2 Protocolos de
+Seguridad Implementados</h2>
+<ol type="1">
+<li><strong>Protección CSRF (Cross-Site Request Forgery)</strong>:
+Django inyecta tokens obligatorios en todos los formularios POST para
+prevenir ataques maliciosos.</li>
+<li><strong>Seguridad de Contraseñas</strong>: Uso del algoritmo
+<strong>PBKDF2 con salt</strong> (estándar de Django) para el
+almacenamiento de credenciales.</li>
+<li><strong>Prevención de XSS</strong>: El motor de templates escapa
+automáticamente cualquier contenido HTML malintencionado.</li>
+<li><strong>Control de Sesiones</strong>: Expiración automática de
+sesiones y validación de cookies de seguridad (<code>HttpOnly</code>,
+<code>Secure</code>).</li>
+</ol>
+<h2 id="verificación-y-pruebas">6.3 Verificación y Pruebas</h2>
+<ul>
+<li><strong>Pruebas de Funcionalidad</strong>: Validación del CRUD de
+usuarios.</li>
+<li><strong>Pruebas de Seguridad</strong>: Intento de acceso a
+<code>/dashboard/</code> por parte de usuarios no administradores (debe
+redirigir al Login).</li>
+<li><strong>Pruebas de Carga de IA</strong>: Verificación de estabilidad
+al recibir múltiples solicitudes de predicción simultáneas.</li>
+</ul>
+<hr />
+<h1
+id="ieee-1016---07.-matriz-de-trazabilidad-de-requerimientos-rtm">IEEE
+1016 - 07. Matriz de Trazabilidad de Requerimientos (RTM)</h1>
+<h2 id="propósito-y-alcance">7.1 Propósito y Alcance</h2>
+<p>La Matriz de Trazabilidad de Requerimientos (RTM) es un componente
+crítico del diseño de software que asegura la integridad bidireccional
+entre las necesidades del usuario y la implementación técnica. Garantiza
+que: 1. No existan requerimientos funcionales sin una solución técnica
+asignada. 2. Cada componente de software tenga una justificación
+originada en un requerimiento.</p>
+<h2 id="mapeo-detallado-matriz-rtm">7.2 Mapeo Detallado (Matriz
+RTM)</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ID REQ</th>
+<th style="text-align: left;">Requerimiento Funcional</th>
+<th style="text-align: left;">Componente del Sistema</th>
+<th style="text-align: left;">Módulo (App: Django)</th>
+<th style="text-align: left;">Capa del Diseño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>RF01</strong></td>
+<td style="text-align: left;">Registro de Usuarios (Pacientes)</td>
+<td style="text-align: left;"><code>User Management</code></td>
+<td style="text-align: left;"><code>core.views.register</code></td>
+<td style="text-align: left;">Lógica de Negocio</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF02</strong></td>
+<td style="text-align: left;">Inicio de Sesión Seguro</td>
+<td style="text-align: left;"><code>Identity Engine</code></td>
+<td style="text-align: left;"><code>core.views.login_view</code></td>
+<td style="text-align: left;">Seguridad</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF03</strong></td>
+<td style="text-align: left;">Captura de Respuesta de Encuesta</td>
+<td style="text-align: left;"><code>Survey Engine</code></td>
+<td style="text-align: left;"><code>core.forms.SurveyForm</code></td>
+<td style="text-align: left;">Interfaces de Usuario</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF04</strong></td>
+<td style="text-align: left;">Análisis de Riesgo vía IA</td>
+<td style="text-align: left;"><code>AI Prediction Engine</code></td>
+<td style="text-align: left;"><code>core.ml_utils.predict</code></td>
+<td style="text-align: left;">Servicio de Inferencia</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF05</strong></td>
+<td style="text-align: left;">Visualización de Historial</td>
+<td style="text-align: left;"><code>Historical Portal</code></td>
+<td style="text-align: left;"><code>core.views.history</code></td>
+<td style="text-align: left;">Persistencia</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF06</strong></td>
+<td style="text-align: left;">Dashboard de Métricas Salud</td>
+<td style="text-align: left;"><code>Analytics Hub</code></td>
+<td style="text-align: left;"><code>core.views.dashboard</code></td>
+<td style="text-align: left;">Inteligencia de Negocio</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF07</strong></td>
+<td style="text-align: left;">Gestión Administrativa</td>
+<td style="text-align: left;"><code>Admin Interface</code></td>
+<td style="text-align: left;"><code>core.admin.py</code></td>
+<td style="text-align: left;">Administración</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF08</strong></td>
+<td style="text-align: left;">Cierre de Sesión Seguro</td>
+<td style="text-align: left;"><code>Session Manager</code></td>
+<td style="text-align: left;"><code>core.views.logout_view</code></td>
+<td style="text-align: left;">Control de Acceso</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagrama-de-trazabilidad-de-flujo-uml">7.3 Diagrama de
+Trazabilidad de Flujo (UML)</h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Requirements_Layer [Capa de Requerimientos]
+        R1[Acceso Seguro]
+        R2[Evaluación Mental]
+        R3[Análisis Predictivo]
+        R4[Reporte Global]
+    end
+
+    subgraph Architecture_Layer [Capa de Arquitectura]
+        D1[Módulo Auth]
+        D2[Módulo Survey]
+        D3[Módulo ML/IA]
+        D4[Módulo Analytics]
+    end
+
+    R1 -.-&gt; D1
+    R2 -.-&gt; D2
+    R3 -.-&gt; D3
+    R4 -.-&gt; D4
+
+    D1 --- APP[MindCare Application Core]
+    D2 --- APP
+    D3 --- APP
+    D4 --- APP</code></pre>
+<h2 id="trazabilidad-de-requerimientos-no-funcionales-rnf">7.4
+Trazabilidad de Requerimientos No Funcionales (RNF)</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ID RNF</th>
+<th style="text-align: left;">Atributo de Calidad</th>
+<th style="text-align: left;">Mecanismo de Implementación</th>
+<th style="text-align: left;">Sección de Diseño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>RNF01</strong></td>
+<td style="text-align: left;">Seguridad</td>
+<td style="text-align: left;">Encriptación de datos y protección CSRF
+nativa.</td>
+<td style="text-align: left;">Sección 06 / 32</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RNF02</strong></td>
+<td style="text-align: left;">Rendimiento</td>
+<td style="text-align: left;">Carga diferida del modelo Random Forest
+con Joblib.</td>
+<td style="text-align: left;">Sección 27</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RNF03</strong></td>
+<td style="text-align: left;">Accesibilidad</td>
+<td style="text-align: left;">Cumplimiento de estándares WCAG 2.1
+(AA).</td>
+<td style="text-align: left;">Sección 24</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RNF04</strong></td>
+<td style="text-align: left;">Usabilidad</td>
+<td style="text-align: left;">Diseño responsivo y navegación
+simplificada.</td>
+<td style="text-align: left;">Sección 05 / 33</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="ieee-1016---08.-diseño-de-despliegue-y-recursos">IEEE 1016 - 08.
+Diseño de Despliegue y Recursos</h1>
+<h2 id="topología-de-despliegue-diagrama-de-despliegue-uml">8.1
+Topología de Despliegue (Diagrama de Despliegue UML)</h2>
+<p>Describe cómo el software MindCare se distribuye en la
+infraestructura de hardware/nube.</p>
+<pre class="mermaid"><code>graph TD
+    subgraph Cloud_Infrastructure [Servidor Cloud / Localhost]
+        subgraph Web_Server_Node [Nodo de Aplicación]
+            WS[WSGI Server: Gunicorn/Uvicorn]
+            Django[Django App]
+            ML[ML Engine Process]
+        end
+        
+        subgraph Database_Node [Nodo de Persistencia]
+            DB[(SQLite 3 File)]
+        end
+    end
+
+    User_PC[Navegador Usuario] --&gt;|HTTPS / Port 8000| WS
+    Admin_PC[Navegador Admin] --&gt;|HTTPS / Port 8000| WS
+    Django &lt;--&gt; DB
+    Django &lt;--&gt; ML</code></pre>
+<h2 id="requisitos-de-recursos-de-hardware">8.2 Requisitos de Recursos
+de Hardware</h2>
+<ul>
+<li><strong>CPU</strong>: Mínimo 2 núcleos (Recomendado para
+procesamiento de modelos de IA en paralelo).</li>
+<li><strong>RAM</strong>: 4GB (Mínimo), 8GB (Recomendado para manejar
+grandes volúmenes de datos en el Dashboard).</li>
+<li><strong>Almacenamiento</strong>: 500MB para la aplicación y 1GB+
+para el crecimiento de la base de datos y modelos.</li>
+</ul>
+<h2 id="recursos-de-software">8.3 Recursos de Software</h2>
+<ul>
+<li><strong>Sistema Operativo</strong>: Linux (Ubuntu/Debian) o
+macOS.</li>
+<li><strong>Entorno de Ejecución</strong>: Python 3.10 o superior.</li>
+<li><strong>Dependencias Clave</strong>: <code>django</code>,
+<code>scikit-learn</code>, <code>joblib</code>, <code>pandas</code>,
+<code>numpy</code>.</li>
+</ul>
+<h2 id="estrategia-de-entrega-continua">8.4 Estrategia de Entrega
+Continua</h2>
+<p>La aplicación utiliza un flujo de despliegue simplificado mediante
+Git y entornos virtuales de Python (venv) para asegurar la
+reproducibilidad térmica y de dependencias.</p>
+<hr />
+<h1
+id="ieee-1016---09.-plan-de-pruebas-y-aseguramiento-de-calidad-sqa">IEEE
+1016 - 09. Plan de Pruebas y Aseguramiento de Calidad (SQA)</h1>
+<h2 id="estrategia-de-calidad">9.1 Estrategia de Calidad</h2>
+<p>MindCare utiliza un enfoque de pirámide de pruebas para garantizar la
+estabilidad del diagnóstico basado en IA.</p>
+<h2 id="niveles-de-prueba-diagrama-de-pirámide">9.2 Niveles de Prueba
+(Diagrama de Pirámide)</h2>
+<pre class="mermaid"><code>graph BT
+    Unit[Unit Tests: Lógica de Modelos y Forms]
+    Integr[Integration Tests: Flujo Survey -&gt; ML]
+    EndTo[E2E Tests: Registro -&gt; Encuesta -&gt; Resultado]
+    
+    Unit --- Integr
+    Integr --- EndTo</code></pre>
+<h2 id="casos-de-prueba-críticos">9.3 Casos de Prueba Críticos</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ID de Prueba</th>
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">Resultado Esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>TC1</strong></td>
+<td style="text-align: left;">Autenticación</td>
+<td style="text-align: left;">Cierre de sesión y re-acceso</td>
+<td style="text-align: left;">Sesión invalidada correctamente.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC2</strong></td>
+<td style="text-align: left;">AI Engine</td>
+<td style="text-align: left;">Enviar vector de datos nulo</td>
+<td style="text-align: left;">Manejo de excepción y error amigable.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC3</strong></td>
+<td style="text-align: left;">Dashboard</td>
+<td style="text-align: left;">Carga de 10k respuestas</td>
+<td style="text-align: left;">Renderizado de gráficos en &lt; 2
+segundos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TC4</strong></td>
+<td style="text-align: left;">User Management</td>
+<td style="text-align: left;">Rol de Admin removido a sí mismo</td>
+<td style="text-align: left;">El sistema debe bloquear la acción
+(Protección implementada).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="verificación-del-modelo-de-ia">9.4 Verificación del Modelo de
+IA</h2>
+<p>Se realizan pruebas de consistencia (Backtesting) comparando las
+predicciones del modelo integrado frente a los resultados del entorno de
+entrenamiento original para asegurar que la exportación
+<code>.joblib</code> no degradó la precisión del Random Forest.</p>
+<hr />
+<h1 id="ieee-1016---10.-mantenimiento-y-gestión-de-configuración">IEEE
+1016 - 10. Mantenimiento y Gestión de Configuración</h1>
+<h2 id="gestión-de-cambios">10.1 Gestión de Cambios</h2>
+<p>El mantenimiento de MindCare se rige por un ciclo de vida de
+desarrollo de software (SDLC) iterativo.</p>
+<h2 id="control-de-versiones">10.2 Control de Versiones</h2>
+<ul>
+<li><strong>Repositorio</strong>: Git.</li>
+<li><strong>Flujo de Trabajo</strong>: GitFlow (Ramas para Features,
+Develop y Main).</li>
+</ul>
+<h2 id="ciclo-de-vida-del-modelo-de-ia-mlops">10.3 Ciclo de Vida del
+Modelo de IA (MLOps)</h2>
+<p>Debido a que la salud mental es un campo dinámico, el modelo de IA
+requiere mantenimiento periódico.</p>
+<pre class="mermaid"><code>graph TD
+    Data[Recolección de nuevas respuestas] --&gt; Review[Auditoría por expertos en salud]
+    Review --&gt; Retrain[Re-entrenamiento del Modelo]
+    Retrain --&gt; Eval[Evaluación de Precisión/Recall]
+    Eval --&gt; Deploy[Actualización del archivo .joblib]
+    Deploy --&gt; Data</code></pre>
+<h2 id="copias-de-seguridad-backup">10.4 Copias de Seguridad
+(Backup)</h2>
+<ul>
+<li><strong>Base de Datos</strong>: Respaldos diarios automáticos del
+archivo <code>db.sqlite3</code>.</li>
+<li><strong>Código</strong>: Versionamiento en la nube
+(GitHub/GitLab).</li>
+</ul>
+<h2 id="procedimientos-de-parches">10.5 Procedimientos de Parches</h2>
+<p>Toda actualización de seguridad en el framework Django debe ser
+aplicada en un plazo máximo de 7 días tras su liberación en los canales
+oficiales.</p>
+<hr />
+<h1 id="ieee-1016---11.-análisis-de-riesgos-y-mitigación">IEEE 1016 -
+11. Análisis de Riesgos y Mitigación</h1>
+<h2 id="identificación-de-riesgos">11.1 Identificación de Riesgos</h2>
+<p>En el desarrollo de MindCare, se han identificado riesgos técnicos y
+operativos que podrían afectar la integridad del sistema o la precisión
+de los diagnósticos.</p>
+<h2 id="matriz-de-riesgos">11.2 Matriz de Riesgos</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Riesgo</th>
+<th style="text-align: left;">Impacto</th>
+<th style="text-align: left;">Probabilidad</th>
+<th style="text-align: left;">Estrategia de Mitigación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>R1</strong></td>
+<td style="text-align: left;">Sesgo en el Modelo de IA</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Uso de datasets balanceados y auditorías
+periódicas de equidad algorítmica.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R2</strong></td>
+<td style="text-align: left;">Fuga de Datos Sensibles</td>
+<td style="text-align: left;">Crítico</td>
+<td style="text-align: left;">Baja</td>
+<td style="text-align: left;">Implementación de encriptación AES-256 y
+cumplimiento de normativas de privacidad.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R3</strong></td>
+<td style="text-align: left;">Incompatibilidad de Navegador</td>
+<td style="text-align: left;">Bajo</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Pruebas multiplataforma y uso de Vanilla
+JS/CSS estándar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R4</strong></td>
+<td style="text-align: left;">Caída del Servidor (Downtime)</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">Baja</td>
+<td style="text-align: left;">Monitorización activa y planes de
+redundancia en la nube.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagrama-de-flujo-de-gestión-de-riesgos">11.3 Diagrama de Flujo
+de Gestión de Riesgos</h2>
+<pre class="mermaid"><code>graph TD
+    Identify[Identificar Riesgo] --&gt; Analyze[Analizar Impacto/Prob]
+    Analyze --&gt; Plan[Planificar Mitigación]
+    Plan --&gt; Monitor[Monitorear Eventos]
+    Monitor --&gt;|Riesgo Ocurrido| Execute[Ejecutar Plan de Contingencia]
+    Monitor --&gt;|Riesgo Controlado| Identify</code></pre>
+<h2 id="contingencia-crítica">11.4 Contingencia Crítica</h2>
+<p>En caso de que el modelo de IA genere resultados inconsistentes, el
+sistema tiene un mecanismo de “Safe Mode” que desactiva temporalmente
+las predicciones y muestra un mensaje de contacto directo con
+profesionales de salud mental.</p>
+<hr />
+<h1 id="ieee-1016---12.-estándares-de-codificación-y-calidad">IEEE 1016
+- 12. Estándares de Codificación y Calidad</h1>
+<h2 id="estilo-de-programación">12.1 Estilo de Programación</h2>
+<p>Para asegurar la legibilidad y mantenibilidad del código, MindCare
+sigue las guías de estilo estándar para cada lenguaje utilizado.</p>
+<ul>
+<li><strong>Python</strong>: Cumplimiento estricto de <strong>PEP
+8</strong>. Uso de nombres descriptivos para funciones
+(<code>get_user_responses</code>) y variables.</li>
+<li><strong>HTML/CSS</strong>: Uso de metodologías de nombrado
+semántico. CSS organizado por componentes.</li>
+<li><strong>JavaScript</strong>: Estilo moderno (ES6+), sin dependencias
+pesadas innecesarias.</li>
+</ul>
+<h2 id="revisiones-de-código-code-review">12.2 Revisiones de Código
+(Code Review)</h2>
+<p>Todo cambio en el repositorio debe pasar por un proceso de revisión
+por pares enfocado en: 1. <strong>Correctitud lógica</strong>. 2.
+<strong>Eficiencia del algoritmo</strong>. 3. <strong>Seguridad
+(validación de inputs)</strong>.</p>
+<h2 id="diagrama-de-calidad-de-software-iso-25010">12.3 Diagrama de
+Calidad de Software (ISO 25010)</h2>
+<pre class="mermaid"><code>mindmap
+  root((Calidad MindCare))
+    Funcionalidad
+       Adecuación
+       Precisión
+    Eficiencia
+       Comportamiento Temporal
+       Uso de Recursos
+    Usabilidad
+       Aprendizaje
+       Estética
+    Seguridad
+       Confidencialidad
+       Integridad</code></pre>
+<h2 id="herramientas-de-análisis-estático">12.4 Herramientas de Análisis
+Estático</h2>
+<p>Se recomienda el uso de <code>Flake8</code> y <code>Pylint</code>
+para detectar errores potenciales antes del despliegue en
+producción.</p>
+<hr />
+<h1 id="ieee-1016---13.-glosario-y-definiciones-técnicas">IEEE 1016 -
+13. Glosario y Definiciones Técnicas</h1>
+<h2 id="propósito-1">13.1 Propósito</h2>
+<p>Este glosario define los términos técnicos y de dominio utilizados a
+lo largo de toda la documentación de ingeniería de MindCare para evitar
+ambigüedades.</p>
+<h2 id="términos-técnicos">13.2 Términos Técnicos</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Término</th>
+<th style="text-align: left;">Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Django</strong></td>
+<td style="text-align: left;">Framework de alto nivel para desarrollo
+web en Python utilizado como núcleo del sistema.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Random Forest</strong></td>
+<td style="text-align: left;">Algoritmo de aprendizaje supervisado
+basado en múltiples árboles de decisión usado para la predicción de
+salud.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inferencia</strong></td>
+<td style="text-align: left;">Acción de aplicar el modelo de IA ya
+entrenado sobre nuevos datos de un usuario para obtener una
+predicción.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>One-Hot Encoding</strong></td>
+<td style="text-align: left;">Técnica de procesamiento de datos que
+convierte variables categóricas en vectores binarios numéricos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CSRF</strong></td>
+<td style="text-align: left;">Cross-Site Request Forgery; tipo de ataque
+que MindCare mitiga mediante tokens de seguridad únicos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RBAC</strong></td>
+<td style="text-align: left;">Role-Based Access Control; diseño de
+seguridad que asigna permisos según el rol del usuario
+(Admin/User).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Joblib</strong></td>
+<td style="text-align: left;">Librería de Python utilizada para
+serializar y cargar eficientemente el modelo de Machine Learning.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapa-de-conceptos-de-dominio">13.3 Mapa de Conceptos de
+Dominio</h2>
+<pre class="mermaid"><code>graph LR
+    SaludM[Salud Mental] --- IA[IA Predictiva]
+    IA --- DM[Data Mining]
+    DM --- SR[Survey Response]
+    SR --- Rec[Recomendación Clínica]</code></pre>
+<hr />
+<h1 id="ieee-1016---14.-guía-de-operación-y-administración">IEEE 1016 -
+14. Guía de Operación y Administración</h1>
+<h2 id="manual-del-administrador">14.1 Manual del Administrador</h2>
+<p>El administrador tiene acceso a herramientas críticas para el
+monitoreo del sistema.</p>
+<h3 id="gestión-de-usuarios">Gestión de Usuarios</h3>
+<ul>
+<li>Acceso: <code>/users/</code></li>
+<li>Funciones: Búsqueda, cambio de roles, activación/desactivación de
+cuentas.</li>
+</ul>
+<h3 id="análisis-estadístico">Análisis Estadístico</h3>
+<ul>
+<li>Acceso: <code>/dashboard/</code></li>
+<li>Interpretación: Los gráficos de barras y pasteles representan la
+distribución de salud mental en la población evaluada.</li>
+</ul>
+<h2 id="flujo-de-usuario-estándar-diagrama-uml">14.2 Flujo de Usuario
+Estándar (Diagrama UML)</h2>
+<pre class="mermaid"><code>journey
+    title Experiencia del Usuario en MindCare
+    section Acceso
+      Llegar al sitio: 5: Usuario
+      Iniciar Sesión: 4: Usuario
+    section Evaluación
+      Cargar Encuesta: 5: Usuario
+      Responder preguntas: 3: Usuario
+      Recibir ayuda contextual: 4: Sistema
+    section Resultados
+      Ver predicción IA: 5: Usuario
+      Consultar historial: 4: Usuario</code></pre>
+<h2 id="resolución-de-problemas-troubleshooting">14.3 Resolución de
+Problemas (Troubleshooting)</h2>
+<ul>
+<li><strong>Error 500 al enviar encuesta</strong>: Verificar que el
+archivo del modelo IA esté presente en el directorio correcto.</li>
+<li><strong>Gráficos no cargan</strong>: Asegurar que la conexión a
+internet permite cargar la librería <code>Chart.js</code> desde el CDN
+(si aplica) o que el archivo local esté referenciado.</li>
+<li><strong>Problemas de Login</strong>: Borrar cookies de sesión y
+verificar que el usuario esté marcado como “Activo” en la base de
+datos.</li>
+</ul>
+<hr />
+<h1
+id="ieee-1016---15.-especificación-de-requerimientos-de-software-srs">IEEE
+1016 - 15. Especificación de Requerimientos de Software (SRS)</h1>
+<h2 id="perspectiva-del-producto">15.1 Perspectiva del Producto</h2>
+<p>MindCare se posiciona como una herramienta de apoyo primario en la
+detección de riesgos de salud mental. No reemplaza un diagnóstico
+médico, pero proporciona una base basada en datos.</p>
+<h2 id="requerimientos-funcionales-detallados">15.2 Requerimientos
+Funcionales Detallados</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Nombre</th>
+<th style="text-align: left;">Prioridad</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>RF.01</strong></td>
+<td style="text-align: left;">Gestión de Perfil</td>
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">El usuario debe poder actualizar su nombre
+y correo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF.02</strong></td>
+<td style="text-align: left;">Persistencia de Encuesta</td>
+<td style="text-align: left;">Crítica</td>
+<td style="text-align: left;">Las respuestas deben guardarse incluso si
+el usuario cierra la sesión antes de ver los resultados.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF.03</strong></td>
+<td style="text-align: left;">Visualización de Tendencias</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">El dashboard debe permitir filtrar datos
+por rango de fechas (Planificado).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RF.04</strong></td>
+<td style="text-align: left;">Exportación de Datos</td>
+<td style="text-align: left;">Baja</td>
+<td style="text-align: left;">Administradores podrán descargar reportes
+en CSV/PDF.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="requerimientos-de-atributos-del-sistema-rnf">15.3 Requerimientos
+de Atributos del Sistema (RNF)</h2>
+<pre class="mermaid"><code>graph TD
+    RNF[Atributos del Sistema]
+    RNF --&gt; Portabilidad[Compatible con Chrome/Safari/Edge]
+    RNF --&gt; Rendimiento[Inferencia IA &lt; 0.1s]
+    RNF --&gt; Disponibilidad[99.5% de tiempo de actividad]
+    RNF --&gt; Seguridad[Cifrado de datos en reposo]</code></pre>
+<h2 id="restricciones-de-diseño">15.4 Restricciones de Diseño</h2>
+<ul>
+<li>El backend debe permanecer en Python para compatibilidad con
+librerías de IA.</li>
+<li>La base de datos debe ser ligera para despliegue en servidores de
+bajos recursos.</li>
+<li>La interfaz debe ser accesible (WCAG 2.1) para usuarios con
+diferentes capacidades.</li>
+</ul>
+<hr />
+<h1 id="ieee-1016---16.-justificación-del-diseño-rationales">IEEE 1016 -
+16. Justificación del Diseño (Rationales)</h1>
+<h2 id="decisiones-arquitectónicas">16.1 Decisiones Arquitectónicas</h2>
+<p>Este módulo documenta el “por qué” detrás de las elecciones técnicas
+más importantes, permitiendo que futuros desarrolladores comprendan la
+filosofía del sistema.</p>
+<h2 id="análisis-de-alternativas">16.2 Análisis de Alternativas</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Decisión</th>
+<th style="text-align: left;">Opción Elegida</th>
+<th style="text-align: left;">Razón de la Elección</th>
+<th style="text-align: left;">Alternativas Consideradas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Framework</strong></td>
+<td style="text-align: left;">Django</td>
+<td style="text-align: left;">Seguridad por defecto y velocidad de
+desarrollo.</td>
+<td style="text-align: left;">Flask, FastAPI</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Arquitectura</strong></td>
+<td style="text-align: left;">MVT</td>
+<td style="text-align: left;">Desacoplamiento eficiente y manejo robusto
+de formularios.</td>
+<td style="text-align: left;">Microservicios</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Modelo de IA</strong></td>
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">Alta precisión en datos tabulares y bajo
+requerimiento de hardware.</td>
+<td style="text-align: left;">Deep Learning (MLP)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Base de Datos</strong></td>
+<td style="text-align: left;">SQLite</td>
+<td style="text-align: left;">Simplicidad y nulo mantenimiento para esta
+fase del proyecto.</td>
+<td style="text-align: left;">PostgreSQL</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagrama-de-flujo-de-decisiones">16.3 Diagrama de Flujo de
+Decisiones</h2>
+<pre class="mermaid"><code>graph TD
+    Problem[Necesidad de Diagnóstico Rápido] --&gt; Choice1{¿Simplicidad o Complejidad?}
+    Choice1 --&gt;|Simplicidad| Django[Framework Django]
+    Choice1 --&gt;|Simplicidad| SQLite[Base de datos local]
+    
+    Problem --&gt; Choice2{¿Modelo Caja Negra o Interpretable?}
+    Choice2 --&gt;|Interpretable| RF[Random Forest]
+    Choice2 --&gt;|Caja Negra| DL[Redes Neuronales]</code></pre>
+<h2 id="impacto-de-las-decisiones">16.4 Impacto de las Decisiones</h2>
+<p>Las decisiones tomadas priorizan la <strong>estabilidad</strong> y la
+<strong>ética</strong> sobre la experimentación técnica, asegurando que
+el producto final sea confiable para el usuario final.</p>
+<hr />
+<h1 id="ieee-1016---17.-ética-de-ingeniería-y-privacidad-de-la-ia">IEEE
+1016 - 17. Ética de Ingeniería y Privacidad de la IA</h1>
+<h2 id="principios-éticos-de-mindcare">17.1 Principios Éticos de
+MindCare</h2>
+<p>Dado que el sistema maneja información de salud mental, la ética no
+es un añadido, sino una base de la ingeniería del software.</p>
+<ol type="1">
+<li><strong>Beneficencia</strong>: El sistema debe priorizar el
+bienestar del usuario sobre cualquier métrica comercial.</li>
+<li><strong>No maleficencia</strong>: Los algoritmos no deben usarse
+para discriminar a empleados por su estado mental.</li>
+<li><strong>Transparencia</strong>: El usuario debe saber que interactúa
+con una IA y cómo se procesan sus datos.</li>
+</ol>
+<h2 id="privacidad-por-diseño-privacy-by-design">17.2 Privacidad por
+Diseño (Privacy by Design)</h2>
+<ul>
+<li><strong>Anonimización</strong>: Los resultados estadísticos en el
+dashboard no revelan la identidad del usuario a los
+administradores.</li>
+<li><strong>Minimización de Datos</strong>: Solo se solicitan los datos
+estrictamente necesarios para el funcionamiento del modelo de IA.</li>
+<li><strong>Cifrado de Extremo a Extremo</strong>: Los datos sensibles
+viajan bajo protocolos seguros (HTTPS) y se almacenan con hashing.</li>
+</ul>
+<h2 id="diagrama-de-ciclo-de-datos-ético">17.3 Diagrama de Ciclo de
+Datos Ético</h2>
+<pre class="mermaid"><code>graph LR
+    Input[Entrada de Datos] --&gt; Encrypt[Cifrado]
+    Encrypt --&gt; Predict[Inferencia IA]
+    Predict --&gt; Output[Resultado Personalizado]
+    Output --&gt; Stats[Estadísticas Agregadas Anónimas]
+    Stats --&gt; Admin[Dashboard]</code></pre>
+<h2 id="responsabilidad-algorítmica">17.4 Responsabilidad
+Algorítmica</h2>
+<p>MindCare incluye una cláusula de responsabilidad que aclara que el
+modelo es una <strong>herramienta de tamizaje</strong>, no un juicio
+clínico definitivo.</p>
+<hr />
+<h1 id="ieee-1016---18.-roadmap-y-futuro-del-proyecto">IEEE 1016 - 18.
+Roadmap y Futuro del Proyecto</h1>
+<h2 id="visión-a-largo-plazo">18.1 Visión a Largo Plazo</h2>
+<p>MindCare aspira a convertirse en el estándar de oro para la detección
+temprana de riesgos psicosociales en entornos corporativos de alta
+presión.</p>
+<h2 id="hoja-de-ruta-roadmap">18.2 Hoja de Ruta (Roadmap)</h2>
+<pre class="mermaid"><code>timeline
+    title Plan de Evolución MindCare
+    2026 Q1 : Lanzamiento Base : Encuesta multietapa + Modelo Random Forest + Dashboard Admin
+    2026 Q2 : Mejora Analítica : Exportación de reportes PDF + Filtros avanzados de datos
+    2026 Q3 : Expansión IA : Implementación de modelos XGBoost + Análisis de importancia de variables dinámico
+    2026 Q4 : Interoperabilidad : Integración con APIs de RRHH + Notificaciones móviles</code></pre>
+<h2 id="mejoras-técnicas-identificadas">18.3 Mejoras Técnicas
+Identificadas</h2>
+<ul>
+<li><strong>Migración a PostgreSQL</strong>: Para soportar mayor
+concurrencia en entornos corporativos masivos.</li>
+<li><strong>Dockerización</strong>: Crear contenedores para facilitar el
+despliegue en cualquier infraestructura cloud (AWS, Azure, GCP).</li>
+<li><strong>Internacionalización (i18n)</strong>: Soporte para múltiples
+idiomas (Inglés, Portugués) para escalabilidad global.</li>
+</ul>
+<h2 id="conclusión-del-diseño">18.4 Conclusión del Diseño</h2>
+<p>La arquitectura actual es robusta y flexible, permitiendo que todas
+estas mejoras se integren sin necesidad de refactorizaciones profundas,
+cumpliendo así con los principios de <strong>ingeniería de software
+sostenible</strong>.</p>
+<hr />
+<h1 id="ieee-1016---19.-referencia-detallada-de-la-api">IEEE 1016 - 19.
+Referencia Detallada de la API</h1>
+<h2 id="arquitectura-de-endpoints">19.1 Arquitectura de Endpoints</h2>
+<p>MindCare utiliza una estructura de URLs semánticas para la
+comunicación interna y posibles integraciones futuras.</p>
+<h2 id="catálogo-de-endpoints">19.2 Catálogo de Endpoints</h2>
+<h3 id="gestión-de-sesiones">1. Gestión de Sesiones</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Endpoint</th>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">Acceso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>POST</code></td>
+<td style="text-align: left;"><code>/login/</code></td>
+<td style="text-align: left;">Autentica al usuario y crea sesión.</td>
+<td style="text-align: left;">Público</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>POST</code></td>
+<td style="text-align: left;"><code>/logout/</code></td>
+<td style="text-align: left;">Cierra la sesión activa.</td>
+<td style="text-align: left;">Autenticado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>POST</code></td>
+<td style="text-align: left;"><code>/register/</code></td>
+<td style="text-align: left;">Crea un nuevo perfil de usuario.</td>
+<td style="text-align: left;">Público</td>
+</tr>
+</tbody>
+</table>
+<h3 id="motor-de-encuestas-y-ia">2. Motor de Encuestas y IA</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Endpoint</th>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">Acceso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>GET/POST</code></td>
+<td style="text-align: left;"><code>/survey/</code></td>
+<td style="text-align: left;">Renderiza y procesa la encuesta.</td>
+<td style="text-align: left;">Estándar</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>GET</code></td>
+<td style="text-align: left;"><code>/results/&lt;id&gt;/</code></td>
+<td style="text-align: left;">Recupera el diagnóstico de una
+evaluación.</td>
+<td style="text-align: left;">Propietario/Admin</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>GET</code></td>
+<td style="text-align: left;"><code>/history/</code></td>
+<td style="text-align: left;">Lista las evaluaciones pasadas.</td>
+<td style="text-align: left;">Propietario</td>
+</tr>
+</tbody>
+</table>
+<h3 id="administración-ajaxvistas">3. Administración (AJAX/Vistas)</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Endpoint</th>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">Acceso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>GET</code></td>
+<td style="text-align: left;"><code>/users/</code></td>
+<td style="text-align: left;">Lista usuarios registrados.</td>
+<td style="text-align: left;">Superuser</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>POST</code></td>
+<td
+style="text-align: left;"><code>/users/toggle-role/&lt;id&gt;/</code></td>
+<td style="text-align: left;">Cambia rol vía AJAX (JSON).</td>
+<td style="text-align: left;">Superuser</td>
+</tr>
+</tbody>
+</table>
+<h2 id="formato-de-respuesta-ajax-toggle-role">19.3 Formato de Respuesta
+AJAX (Toggle Role)</h2>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;is_superuser&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;username&quot;</span><span class="fu">:</span> <span class="st">&quot;nombre_usuario&quot;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<h2 id="diagrama-de-flujo-de-api">19.4 Diagrama de Flujo de API</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant C as Cliente (Browser)
+    participant A as API / URL Dispatcher
+    participant V as View Layer
+    
+    C-&gt;&gt;A: Request (GET/POST)
+    A-&gt;&gt;V: Match URL Pattern
+    V-&gt;&gt;V: Validación de Permisos (Decoradores)
+    V--&gt;&gt;C: Response (HTML / JSON)</code></pre>
+<hr />
+<h1 id="ieee-1016---20.-manual-de-instalación-técnica-devops">IEEE 1016
+- 20. Manual de Instalación Técnica (DevOps)</h1>
+<h2 id="prerrequisitos-del-entorno">20.1 Prerrequisitos del Entorno</h2>
+<p>Para el despliegue correcto de MindCare, el entorno debe contar con:
+- <strong>Python 3.10+</strong> - <strong>pip</strong> (Administrador de
+paquetes) - <strong>Git</strong> (Para control de versiones)</p>
+<h2 id="pasos-de-instalación-clean-install">20.2 Pasos de Instalación
+(Clean Install)</h2>
+<h3 id="clonación-del-repositorio">1. Clonación del Repositorio</h3>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>url-del-repositorio<span class="op">&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mental_health_project</span></code></pre></div>
+<h3 id="creación-de-entorno-virtual">2. Creación de Entorno Virtual</h3>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate  <span class="co"># En Windows: venv\Scripts\activate</span></span></code></pre></div>
+<h3 id="instalación-de-dependencias">3. Instalación de Dependencias</h3>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div>
+<h3 id="configuración-de-base-de-datos">4. Configuración de Base de
+Datos</h3>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py makemigrations</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py migrate</span></code></pre></div>
+<h3 id="creación-de-superusuario-administrador">5. Creación de
+Superusuario (Administrador)</h3>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py createsuperuser</span></code></pre></div>
+<h3 id="ejecución-del-servidor-de-desarrollo">6. Ejecución del Servidor
+de Desarrollo</h3>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py runserver</span></code></pre></div>
+<h2 id="verificación-de-la-instalación">20.3 Verificación de la
+Instalación</h2>
+<p>Acceda a <code>http://127.0.0.1:8000/</code> y verifique que la
+página de inicio cargue correctamente. Pruebe el acceso al administrador
+en <code>http://127.0.0.1:8000/admin/</code>.</p>
+<h2 id="árbol-de-directorios-mapeo-técnico">20.4 Árbol de Directorios
+(Mapeo Técnico)</h2>
+<pre class="mermaid"><code>graph LR
+    Root[mental_health_project] --&gt; Core[core/ - Lógica App]
+    Root --&gt; Settings[mental_health_project/ - Config]
+    Root --&gt; Docs[documentation/ - IEEE SDD]
+    Core --&gt; Templates[templates/ - HTML]
+    Core --&gt; ML[ml_utils.py - Motor IA]
+    Core --&gt; Static[static/ - CSS/JS]</code></pre>
+<hr />
+<h1 id="ieee-1016---21.-sostenibilidad-e-impacto-social">IEEE 1016 - 21.
+Sostenibilidad e Impacto Social</h1>
+<h2 id="compromiso-con-la-salud-mental">21.1 Compromiso con la Salud
+Mental</h2>
+<p>MindCare no es solo un software; es una intervención tecnológica
+diseñada para reducir la brecha de atención en salud mental comunitaria
+y corporativa.</p>
+<h2 id="impacto-social-esperado">21.2 Impacto Social Esperado</h2>
+<ul>
+<li><strong>Detección Temprana</strong>: Reducción en los tiempos de
+identificación de riesgos psicosociales.</li>
+<li><strong>Desestigmatización</strong>: Al ser una herramienta privada
+y digital, reduce la barrera psicológica de buscar ayuda inicial.</li>
+<li><strong>Acceso Democrático</strong>: Proporciona herramientas de
+alto nivel a organizaciones con recursos limitados para servicios de
+psiquiatría in-situ.</li>
+</ul>
+<h2 id="sostenibilidad-técnica-green-coding">21.3 Sostenibilidad Técnica
+(Green Coding)</h2>
+<ul>
+<li><strong>Eficiencia del Algoritmo</strong>: El uso de Random Forest
+es energéticamente más eficiente que las redes neuronales profundas
+(Deep Learning) para este tipo de datos.</li>
+<li><strong>Arquitectura Ligera</strong>: La optimización de consultas
+ORM reduce el consumo de CPU y memoria en el servidor, disminuyendo la
+huella de carbono digital del proyecto.</li>
+</ul>
+<h2 id="modelo-de-valor-del-proyecto">21.4 Modelo de Valor del
+Proyecto</h2>
+<pre class="mermaid"><code>graph TD
+    App[Software MindCare] --&gt; Benefit1[Bienestar del Empleado]
+    App --&gt; Benefit2[Reducción de Ausentismo]
+    App --&gt; Benefit3[Datos para Políticas Públicas]
+    
+    Benefit1 --&gt; Success[Éxito Organizacional Sostenible]
+    Benefit2 --&gt; Success
+    Benefit3 --&gt; Success</code></pre>
+<h2 id="escalabilidad-regional">21.5 Escalabilidad Regional</h2>
+<p>El diseño soporta la adaptación a diferentes contextos culturales
+mediante la actualización del set de entrenamiento de la IA con datos
+específicos de cada región o país.</p>
+<hr />
+<h1 id="ieee-1016---22.-modelo-de-gobierno-y-licenciamiento">IEEE 1016 -
+22. Modelo de Gobierno y Licenciamiento</h1>
+<h2 id="gobernanza-del-proyecto">22.1 Gobernanza del Proyecto</h2>
+<p>Define quién toma las decisiones técnicas y cómo se gestiona la
+evolución de MindCare dentro del <strong>Grupo Sócrates</strong>.</p>
+<ul>
+<li><strong>Director Técnico</strong>: Supervisa la integridad del
+modelo de IA y la arquitectura core.</li>
+<li><strong>Comité de Ética</strong>: Revisa trimestralmente que las
+predicciones no infrinjan derechos humanos.</li>
+<li><strong>Líder de Desarrollo</strong>: Gestiona el ciclo de vida de
+los parches y el control de versiones.</li>
+</ul>
+<h2 id="propiedad-intelectual">22.2 Propiedad Intelectual</h2>
+<p>Todos los algoritmos, esquemas de bases de datos y códigos fuente
+desarrollados en este repositorio son propiedad del equipo de
+investigación, protegidos bajo leyes de propiedad intelectual
+científica.</p>
+<h2 id="licenciamiento-propuesto">22.3 Licenciamiento Propuesto</h2>
+<p>El proyecto se rige (o se regirá) bajo una licencia que permite el
+uso académico e institucional sin fines de lucro, reservando los
+derechos para implementaciones comerciales masivas.</p>
+<h2 id="diagrama-de-gobernanza">22.4 Diagrama de Gobernanza</h2>
+<pre class="mermaid"><code>graph TD
+    Socrates[Grupo de Investigación Sócrates]
+    Socrates --&gt; CINTIA[Centro de IA - CINTIA]
+    CINTIA --&gt; Project[MindCare Platform]
+    
+    subgraph Decision_Makers
+        RT[Responsable Técnico]
+        RE[Responsable Ético]
+    end
+    
+    Project --- RT
+    Project --- RE</code></pre>
+<h2 id="cumplimiento-normativo-compliance">22.5 Cumplimiento Normativo
+(Compliance)</h2>
+<p>MindCare se diseña con la visión de cumplir con estándares
+internacionales como el GDPR (Europa) y leyes locales de protección de
+datos personales, asegurando que la soberanía de los datos pertenezca
+siempre al titular de la información.</p>
+<hr />
+<h1
+id="ieee-1016---23.-historias-de-usuario-y-criterios-de-aceptación-user-stories">IEEE
+1016 - 23. Historias de Usuario y Criterios de Aceptación (User
+Stories)</h1>
+<h2 id="metodología">23.1 Metodología</h2>
+<p>Las funcionalidades de MindCare se definen desde la perspectiva del
+valor para el usuario final, siguiendo el formato estándar de historias
+de usuario.</p>
+<h2 id="historias-de-usuario-clave">23.2 Historias de Usuario Clave</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Rol</th>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">Resultado / Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>US.1</strong></td>
+<td style="text-align: left;">Usuario</td>
+<td style="text-align: left;">Realizar encuesta anónima</td>
+<td style="text-align: left;">Obtener una recomendación de IA para su
+salud mental.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>US.2</strong></td>
+<td style="text-align: left;">Usuario</td>
+<td style="text-align: left;">Consultar historial</td>
+<td style="text-align: left;">Ver la evolución de sus resultados a
+través del tiempo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>US.3</strong></td>
+<td style="text-align: left;">Administrador</td>
+<td style="text-align: left;">Filtrar usuarios por rol</td>
+<td style="text-align: left;">Identificar rápidamente quiénes tienen
+privilegios elevados.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>US.4</strong></td>
+<td style="text-align: left;">Administrador</td>
+<td style="text-align: left;">Ver estadísticas globales</td>
+<td style="text-align: left;">Entender el estado general de salud de la
+población evaluada.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="criterios-de-aceptación-ejemplo-us.1">23.3 Criterios de
+Aceptación (Ejemplo US.1)</h2>
+<ol type="1">
+<li>El usuario debe poder navegar por las 16 preguntas sin errores.</li>
+<li>Cada pregunta debe mostrar su ayuda contextual correspondiente.</li>
+<li>Al finalizar, el sistema debe procesar los datos en el modelo ML y
+mostrar el resultado en menos de 2 segundos.</li>
+<li>El resultado debe ser guardado automáticamente en la base de datos
+vinculado al ID del usuario.</li>
+</ol>
+<h2 id="mapeo-de-historias-a-funcionalidad">23.4 Mapeo de Historias a
+Funcionalidad</h2>
+<pre class="mermaid"><code>graph LR
+    US1[US.1: Encuesta] --&gt; F1[Encuesta Multietapa]
+    US2[US.2: Historial] --&gt; F2[Vista Historia / DB]
+    US3[US.3: Filtros] --&gt; F3[Search Bar Admin]
+    US4[US.4: Global Stats] --&gt; F4[Dashboard / Chart.js]</code></pre>
+<hr />
+<h1 id="ieee-1016---24.-diseño-de-accesibilidad-y-diversidad-wcag">IEEE
+1016 - 24. Diseño de Accesibilidad y Diversidad (WCAG)</h1>
+<h2 id="compromiso-de-inclusión">24.1 Compromiso de Inclusión</h2>
+<p>MindCare se diseña bajo principios de accesibilidad universal,
+asegurando que personas con diferentes capacidades puedan utilizar la
+herramienta de evaluación de salud mental.</p>
+<h2 id="estándares-aplicados-wcag-2.1">24.2 Estándares Aplicados (WCAG
+2.1)</h2>
+<ul>
+<li><strong>Perceptible</strong>: Uso de contrastes de color altos para
+legibilidad clara. Soporte para lectores de pantalla mediante etiquetas
+ARIA.</li>
+<li><strong>Operable</strong>: Navegación completa por teclado para
+aquellos que no utilizan ratón.</li>
+<li><strong>Comprensible</strong>: Lenguaje claro en las preguntas y
+ayudas contextuales para evitar fatiga cognitiva.</li>
+<li><strong>Robusto</strong>: Compatibilidad con navegadores modernos y
+tecnologías de asistencia.</li>
+</ul>
+<h2 id="diseño-multidispositivo-responsividad">24.3 Diseño
+Multidispositivo (Responsividad)</h2>
+<pre class="mermaid"><code>graph TD
+    Desktop[Escritorio] --&gt; UI[Interfaz Adaptativa]
+    Tablet[Tablet] --&gt; UI
+    Mobile[Móvil] --&gt; UI
+    UI --&gt; UX[Experiencia unificada]</code></pre>
+<h2 id="consideraciones-de-diversidad-lingüística">24.4 Consideraciones
+de Diversidad Lingüística</h2>
+<p>Aunque la versión base se encuentra en español, la arquitectura está
+preparada con el sistema de etiquetas de Django
+(<code>{% trans %}</code>) para permitir una rápida internacionalización
+a otros idiomas, respetando las sensibilidades culturales de cada región
+en temas de salud mental.</p>
+<hr />
+<h1 id="ieee-1016---25.-recuperación-de-desastres-y-continuidad">IEEE
+1016 - 25. Recuperación de Desastres y Continuidad</h1>
+<h2 id="estrategia-de-resiliencia">25.1 Estrategia de Resiliencia</h2>
+<p>Define cómo MindCare sobrevive a fallos críticos de infraestructura o
+errores masivos de datos.</p>
+<h2 id="plan-de-copia-de-seguridad-backups">25.2 Plan de Copia de
+Seguridad (Backups)</h2>
+<ul>
+<li><strong>Frecuencia</strong>: Copias diarias del archivo
+<code>db.sqlite3</code>.</li>
+<li><strong>Almacenamiento</strong>: Las copias deben guardarse en una
+ubicación física o lógica distinta a la del servidor de producción.</li>
+<li><strong>Retención</strong>: Se conservan copias de los últimos 30
+días.</li>
+</ul>
+<h2 id="rto-y-rpo-objetivos-de-tiempo-y-punto">25.3 RTO y RPO (Objetivos
+de Tiempo y Punto)</h2>
+<ul>
+<li><strong>RTO (Recovery Time Objective)</strong>: Tiempo máximo para
+restablecer el servicio tras un fallo &lt; 4 horas.</li>
+<li><strong>RPO (Recovery Point Objective)</strong>: Pérdida máxima
+aceptable de datos &lt; 24 horas (correspondiente al último
+backup).</li>
+</ul>
+<h2 id="procedimiento-de-recuperación">25.4 Procedimiento de
+Recuperación</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Sys as Sistema Caído
+    participant Eng as Ingeniero DevOps
+    participant Bck as Repositorio Backup
+    
+    Eng-&gt;&gt;Sys: Diagnóstico de Fallo
+    Eng-&gt;&gt;Bck: Recuperar última versión de DB y Modelo
+    Eng-&gt;&gt;Sys: Re-despliegue de Código (Git)
+    Sys-&gt;&gt;Sys: Reiniciar Servicios Gunicorn/Nginx
+    Eng-&gt;&gt;Sys: Validar integridad de datos
+    Sys--&gt;&gt;Eng: Sistema Operativo</code></pre>
+<h2 id="continuidad-operativa">25.5 Continuidad Operativa</h2>
+<p>En caso de fallo total del servidor, se mantiene una instancia de
+“solo lectura” o una versión estática de información de contacto de
+emergencia para que el usuario nunca quede desatendido en una situación
+de crisis.</p>
+<hr />
+<h1 id="ieee-1016---26.-inventario-de-software-sbom-y-dependencias">IEEE
+1016 - 26. Inventario de Software (SBOM) y Dependencias</h1>
+<h2 id="software-bill-of-materials-sbom">26.1 Software Bill of Materials
+(SBOM)</h2>
+<p>MindCare se apoya en componentes de código abierto de clase mundial.
+Esta sección cataloga las dependencias críticas y sus licencias.</p>
+<h2 id="componentes-principales-del-backend-python">26.2 Componentes
+Principales del Backend (Python)</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Versión</th>
+<th style="text-align: left;">Licencia</th>
+<th style="text-align: left;">Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Django</strong></td>
+<td style="text-align: left;">6.x</td>
+<td style="text-align: left;">BSD-3-Clause</td>
+<td style="text-align: left;">Framework Core y Seguridad.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scikit-Learn</strong></td>
+<td style="text-align: left;">1.x</td>
+<td style="text-align: left;">BSD-3-Clause</td>
+<td style="text-align: left;">Motor de Machine Learning.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pandas / NumPy</strong></td>
+<td style="text-align: left;">2.x</td>
+<td style="text-align: left;">BSD-3-Clause</td>
+<td style="text-align: left;">Manipulación de datos numéricos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Joblib</strong></td>
+<td style="text-align: left;">1.x</td>
+<td style="text-align: left;">BSD-3-Clause</td>
+<td style="text-align: left;">Persistencia del modelo IA.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="componentes-del-frontend">26.3 Componentes del Frontend</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Origen</th>
+<th style="text-align: left;">Licencia</th>
+<th style="text-align: left;">Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Chart.js</strong></td>
+<td style="text-align: left;">MIT</td>
+<td style="text-align: left;">Visualización de gráficos
+estadísticos.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mermaid.js</strong></td>
+<td style="text-align: left;">MIT</td>
+<td style="text-align: left;">Renderizado de diagramas de
+ingeniería.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Google Fonts</strong></td>
+<td style="text-align: left;">Apache 2.0</td>
+<td style="text-align: left;">Tipografías (Inter/Outfit).</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagrama-de-árbol-de-dependencias">26.4 Diagrama de Árbol de
+Dependencias</h2>
+<pre class="mermaid"><code>graph TD
+    App[MindCare App] --&gt; Django
+    App --&gt; sklearn
+    App --&gt; ChartJS
+    
+    sklearn --&gt; NumPy
+    sklearn --&gt; Pandas
+    sklearn --&gt; Joblib
+    
+    Django --&gt; SQL[SQLite/ORM]</code></pre>
+<h2 id="auditoría-de-seguridad-de-dependencias">26.5 Auditoría de
+Seguridad de Dependencias</h2>
+<p>Se recomienda el uso periódico de <code>pip-audit</code> o
+herramientas de análisis de vulnerabilidades para asegurar que ninguna
+dependencia tenga fallos conocidos (CVEs) que pongan en riesgo el
+sistema.</p>
+<hr />
+<h1 id="ieee-1016---27.-diseño-de-rendimiento-y-eficiencia">IEEE 1016 -
+27. Diseño de Rendimiento y Eficiencia</h1>
+<h2 id="presupuesto-de-rendimiento-performance-budget">27.1 Presupuesto
+de Rendimiento (Performance Budget)</h2>
+<p>MindCare está diseñado para ofrecer una experiencia fluida, incluso
+en entornos con conectividad limitada o servidores de modestas
+prestaciones.</p>
+<h2 id="objetivos-de-latencia">27.2 Objetivos de Latencia</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Proceso</th>
+<th style="text-align: left;">Objetivo (Latencia)</th>
+<th style="text-align: left;">Estrategia de Optimización</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Carga de Home</strong></td>
+<td style="text-align: left;">&lt; 1.0s</td>
+<td style="text-align: left;">Minimización de assets estáticos y uso de
+caché de navegador.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inferencia de IA</strong></td>
+<td style="text-align: left;">&lt; 0.2s</td>
+<td style="text-align: left;">Uso de modelos serializados (Joblib) y
+pre-procesamiento optimizado con NumPy.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Renderizado
+Dashboard</strong></td>
+<td style="text-align: left;">&lt; 1.5s</td>
+<td style="text-align: left;">Consultas agregadas en base de datos
+(<code>Count</code>) en lugar de recuperación de objetos completos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Transiciones AJAX</strong></td>
+<td style="text-align: left;">&lt; 0.5s</td>
+<td style="text-align: left;">Respuestas JSON ligeras y manipulación
+mínima del DOM.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="manejo-de-concurrencia">27.3 Manejo de Concurrencia</h2>
+<ul>
+<li><strong>Web Worker</strong>: El servidor de aplicaciones
+(Gunicorn/Uvicorn) se configura con múltiples trabajadores para manejar
+solicitudes simultáneas.</li>
+<li><strong>SQLite Concurrence</strong>: Se utiliza el modo WAL
+(Write-Ahead Logging) para permitir lecturas y escrituras concurrentes
+sin bloqueos significativos.</li>
+</ul>
+<h2 id="diagrama-de-optimización-de-recursos">27.4 Diagrama de
+Optimización de Recursos</h2>
+<pre class="mermaid"><code>graph TD
+    User[Solicitud Usuario] --&gt; Cache{¿En Caché?}
+    Cache --&gt;|Sí| Result[Entrega Rápida]
+    Cache --&gt;|No| Processor[Procesamiento Django]
+    
+    subgraph Optimizations
+        Processor --&gt; DB_Opt[Consultas Agregadas]
+        Processor --&gt; ML_Opt[Inferencia Vectorizada]
+    end
+    
+    DB_Opt --&gt; Result
+    ML_Opt --&gt; Result</code></pre>
+<h2 id="escalabilidad-vertical">27.5 Escalabilidad Vertical</h2>
+<p>El sistema ha sido probado para mantener tiempos de respuesta
+estables con hasta 50 solicitudes concurrentes en una instancia básica
+de servidor (1 vCPU, 2GB RAM).</p>
+<hr />
+<h1
+id="ieee-1016---28.-internacionalización-y-localización-i18n-l10n">IEEE
+1016 - 28. Internacionalización y Localización (i18n / l10n)</h1>
+<h2 id="estrategia-de-globalización">28.1 Estrategia de
+Globalización</h2>
+<p>MindCare está diseñado para trascender fronteras geográficas,
+reconociendo que la salud mental es un desafío global que requiere
+enfoques localizados.</p>
+<h2 id="framework-de-traducción">28.2 Framework de Traducción</h2>
+<ul>
+<li><strong>Django Translation Engine</strong>: Se utiliza el sistema de
+internacionalización nativo de Django basado en archivos
+<code>.po</code> y <code>.mo</code>.</li>
+<li><strong>Marcado de Cadenas</strong>: Todas las cadenas de texto del
+sistema (preguntas, etiquetas, botones) están encapsuladas en funciones
+de traducción <code>_()</code> o etiquetas de template
+<code>{% trans %}</code>.</li>
+</ul>
+<h2 id="adaptación-cultural-localización">28.3 Adaptación Cultural
+(Localización)</h2>
+<p>No se trata solo de traducir palabras, sino de adaptar conceptos: -
+<strong>Formatos de Fecha/Hora</strong>: Configuración dinámica de
+<code>USE_L10N = True</code>. - <strong>Monedas y Unidades</strong>:
+Adaptación de métricas demográficas según la región. -
+<strong>Sensibilidad de Preguntas</strong>: Posibilidad de cargar
+diferentes conjuntos de preguntas según el contexto cultural del país de
+despliegue.</p>
+<h2 id="diagrama-del-proceso-de-traducción">28.4 Diagrama del Proceso de
+Traducción</h2>
+<pre class="mermaid"><code>graph LR
+    Src[Código Fuente / Templates] --&gt; Extract[Extracción: makemessages]
+    Extract --&gt; Rosetta[Traducción: Archivos .po]
+    Rosetta --&gt; Compile[Compilación: compilemessages]
+    Compile --&gt; App[MindCare Multilenguaje]</code></pre>
+<h2 id="roadmap-de-idiomas">28.5 Roadmap de Idiomas</h2>
+<ul>
+<li><strong>Fase 1</strong>: Español (Completado).</li>
+<li><strong>Fase 2</strong>: Inglés (En desarrollo).</li>
+<li><strong>Fase 3</strong>: Portugués y Francés (Planificado para
+2027).</li>
+</ul>
+<hr />
+<h1
+id="ieee-1016---29.-estrategia-de-migración-de-datos-y-transición">IEEE
+1016 - 29. Estrategia de Migración de Datos y Transición</h1>
+<h2 id="escenarios-de-migración">29.1 Escenarios de Migración</h2>
+<p>MindCare contempla la transición desde sistemas de encuestas manuales
+(papel/Excel) o desde versiones anteriores del software.</p>
+<h2 id="pipeline-de-ingesta-de-datos">29.2 Pipeline de Ingesta de
+Datos</h2>
+<ol type="1">
+<li><strong>Extracción</strong>: Los datos históricos se recolectan en
+formatos CSV o JSON.</li>
+<li><strong>Limpieza</strong>: Scripts de Python validan que los datos
+cumplan con las 16 dimensiones requeridas por el modelo de IA.</li>
+<li><strong>Carga (Load)</strong>: Uso de comandos personalizados de
+Django (<code>management commands</code>) para poblar la base de datos
+SQLite masivamente.</li>
+<li><strong>Inferencia Retroactiva</strong>: Una vez cargados, el
+sistema puede ejecutar el modelo de IA sobre datos antiguos para generar
+predicciones históricas (“retro-labeling”).</li>
+</ol>
+<h2 id="diagrama-del-proceso-de-transición">29.3 Diagrama del Proceso de
+Transición</h2>
+<pre class="mermaid"><code>graph TD
+    Legacy[Datos Legacy: Excel/CSV] --&gt; Scraper[Script de Limpieza]
+    Scraper --&gt; Validator{¿Datos Válidos?}
+    Validator --&gt;|No| Error[Log de Errores]
+    Validator --&gt;|Sí| DjangoBulk[Carga Masiva Django]
+    DjangoBulk --&gt; AI_Proc[Procesamiento IA Histórico]
+    AI_Proc --&gt; Production[Producción MindCare]</code></pre>
+<h2 id="gestión-de-esquemas-migrations">29.4 Gestión de Esquemas
+(Migrations)</h2>
+<p>El uso de <code>django-migrations</code> asegura que cualquier cambio
+en la estructura de la base de datos (por ejemplo, añadir un nuevo campo
+a la encuesta) sea rastreable, reversible y consistente en todos los
+entornos de despliegue.</p>
+<h2 id="plan-de-rollback">29.5 Plan de Rollback</h2>
+<p>En caso de fallo durante una migración crítica, el sistema mantiene
+copias de seguridad de la base de datos previas a la operación para
+permitir una restauración al estado estable en minutos.</p>
+<hr />
+<h1 id="ieee-1016---30.-métricas-de-calidad-de-software-y-kpis">IEEE
+1016 - 30. Métricas de Calidad de Software y KPIs</h1>
+<h2 id="indicadores-clave-de-desempeño-kpis">30.1 Indicadores Clave de
+Desempeño (KPIs)</h2>
+<p>El éxito técnico y social de MindCare se mide a través de un conjunto
+de métricas cuantitativas que se monitorean en cada versión.</p>
+<h2 id="métricas-de-salud-del-software">30.2 Métricas de Salud del
+Software</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Categoría</th>
+<th style="text-align: left;">Métrica</th>
+<th style="text-align: left;">Objetivo</th>
+<th style="text-align: left;">Frecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Estabilidad</strong></td>
+<td style="text-align: left;">Uptime del Servidor</td>
+<td style="text-align: left;">&gt; 99.5%</td>
+<td style="text-align: left;">Mensual</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>IA</strong></td>
+<td style="text-align: left;">Precisión del Modelo (Accuracy)</td>
+<td style="text-align: left;">&gt; 80%</td>
+<td style="text-align: left;">Por versión</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fricción</strong></td>
+<td style="text-align: left;">Tasa de Abandono de Encuesta</td>
+<td style="text-align: left;">&lt; 15%</td>
+<td style="text-align: left;">Semanal</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Calidad</strong></td>
+<td style="text-align: left;">Cobertura de Código (Unit Tests)</td>
+<td style="text-align: left;">&gt; 70%</td>
+<td style="text-align: left;">Por despliegue</td>
+</tr>
+</tbody>
+</table>
+<h2 id="métricas-de-inferencia-ia-matriz-de-confusión">30.3 Métricas de
+Inferencia IA (Matriz de Confusión)</h2>
+<pre class="mermaid"><code>graph TD
+    Actual_Pos[Real: Necesita Tratamiento] --- Pred_Pos[Pred: Necesita - VERDADERO POSITIVO]
+    Actual_Pos --- Pred_Neg[Pred: No necesita - FALSO NEGATIVO]
+    Actual_Neg[Real: No Necesita] --- Pred_Pos_2[Pred: Necesita - FALSO POSITIVO]
+    Actual_Neg --- Pred_Neg_2[Pred: No necesita - VERDADERO NEGATIVO]</code></pre>
+<h2 id="evolución-de-la-calidad-kpi-dashboard">30.4 Evolución de la
+Calidad (KPI Dashboard)</h2>
+<p>El sistema permite a los administradores visualizar el crecimiento
+del volumen de datos y la consistencia de las predicciones, facilitando
+la identificación de casos donde el modelo necesite ser re-entrenado por
+cambios en los patrones de comportamiento de los usuarios (Data
+Drift).</p>
+<hr />
+<h1 id="ieee-1016---31.-evaluación-de-impacto-de-privacidad-dpia">IEEE
+1016 - 31. Evaluación de Impacto de Privacidad (DPIA)</h1>
+<h2 id="análisis-de-flujo-de-datos-sensibles">31.1 Análisis de Flujo de
+Datos Sensibles</h2>
+<p>MindCare procesa datos de salud mental, lo que requiere una
+evaluación rigurosa del impacto en la privacidad de los individuos bajo
+marcos como el GDPR o leyes locales.</p>
+<h2 id="identificación-de-datos-de-alto-riesgo">31.2 Identificación de
+Datos de Alto Riesgo</h2>
+<ul>
+<li><strong>Datos Identificables</strong>: Username, Email, IP
+(registrada en logs de servidor).</li>
+<li><strong>Datos Sensibles</strong>: Respuestas sobre historial
+familiar, interferencia laboral y consecuencias de salud mental.</li>
+</ul>
+<h2 id="evaluación-de-riesgos-de-privacidad">31.3 Evaluación de Riesgos
+de Privacidad</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Actividad de Procesamiento</th>
+<th style="text-align: left;">Riesgo Identificado</th>
+<th style="text-align: left;">Nivel de Riesgo</th>
+<th style="text-align: left;">Medida de Mitigación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Inferencia de IA</strong></td>
+<td style="text-align: left;">Re-identificación a través de patrones de
+respuesta.</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">Agregación de datos y anonimización de
+reportes administrativos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Almacenamiento</strong></td>
+<td style="text-align: left;">Acceso no autorizado a la base de datos
+SQLite.</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">Cifrado a nivel de sistema de archivos y
+permisos restrictivos (600).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Visualización Admin</strong></td>
+<td style="text-align: left;">Exposición de respuestas individuales a
+superusuarios.</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">Implementación de vistas de “solo resumen”
+(Aggregate Views).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ciclo-de-vida-de-la-privacidad">31.4 Ciclo de Vida de la
+Privacidad</h2>
+<pre class="mermaid"><code>graph LR
+    Collect[Recolección con Consentimiento] --&gt; Process[Procesamiento Mínimo]
+    Process --&gt; Storage[Almacenamiento Cifrado]
+    Storage --&gt; Deletion[Derecho al Olvido / Borrado]</code></pre>
+<h2 id="declaración-de-conformidad">31.5 Declaración de Conformidad</h2>
+<p>El sistema se diseña para cumplir con el principio de “Privacidad
+desde el Diseño”, asegurando que la protección de datos sea una
+característica intrínseca del software y no un parche posterior.</p>
+<hr />
+<h1 id="ieee-1016---32.-modelado-de-amenazas-y-seguridad-profunda">IEEE
+1016 - 32. Modelado de Amenazas y Seguridad Profunda</h1>
+<h2 id="metodología-stride">32.1 Metodología STRIDE</h2>
+<p>Se ha realizado un análisis de seguridad utilizando el framework
+STRIDE para identificar posibles debilidades en la arquitectura de
+MindCare.</p>
+<h2 id="análisis-de-amenazas">32.2 Análisis de Amenazas</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Categoría STRIDE</th>
+<th style="text-align: left;">Amenaza Potencial</th>
+<th style="text-align: left;">Mitigación Implementada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Spoofing</strong></td>
+<td style="text-align: left;">Suplantación de identidad de
+administrador.</td>
+<td style="text-align: left;">Hashing de contraseñas PBKDF2 + Validación
+robusta de sesiones.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tampering</strong></td>
+<td style="text-align: left;">Alteración de resultados de la encuesta en
+tránsito.</td>
+<td style="text-align: left;">Uso obligatorio de TLS/HTTPS y validación
+de integridad de datos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Repudiation</strong></td>
+<td style="text-align: left;">Denegación de haber realizado una
+encuesta.</td>
+<td style="text-align: left;">Registro de logs de actividad auditables
+(Audit Logs).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Information Leak</strong></td>
+<td style="text-align: left;">Exposición de errores de Django en
+producción.</td>
+<td style="text-align: left;"><code>DEBUG = False</code> y gestión de
+errores personalizada.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DoS</strong></td>
+<td style="text-align: left;">Saturación de solicitudes de registro
+falsos.</td>
+<td style="text-align: left;">Implementación de validaciones a nivel de
+formulario.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Elevation of
+Privilege</strong></td>
+<td style="text-align: left;">Acceso de usuario estándar a
+<code>/users/edit/</code>.</td>
+<td style="text-align: left;">Decorador <code>@user_passes_test</code>
+en cada endpoint sensible.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagrama-de-flujo-de-datos-con-límites-de-confianza-dfd">32.3
+Diagrama de Flujo de Datos con Límites de Confianza (DFD)</h2>
+<pre class="mermaid"><code>graph TD
+    User[Navegador del Usuario] -- &quot;HTTPS (Encr)&quot; --&gt; LB[Frontera de Confianza: Servidor Web]
+    LB --&gt; View[Logic Layer]
+    View --&gt; DB[(Confianza Alta: SQLite)]
+    View --&gt; ML[Motor IA]</code></pre>
+<h2 id="auditoría-de-seguridad-periódica">32.4 Auditoría de Seguridad
+Periódica</h2>
+<p>Se recomienda la ejecución mensual de escaneos de vulnerabilidades
+utilizando herramientas como <strong>OWASP ZAP</strong> para detectar
+riesgos emergentes en las bibliotecas de terceros.</p>
+<hr />
+<h1
+id="ieee-1016---33.-investigación-ux-y-diseño-centrado-en-el-usuario">IEEE
+1016 - 33. Investigación UX y Diseño Centrado en el Usuario</h1>
+<h2 id="filosofía-de-diseño-empatía-digital">33.1 Filosofía de Diseño:
+Empatía Digital</h2>
+<p>MindCare busca crear una experiencia reconfortante y segura para
+usuarios que podrían estar bajo estrés mental sustancial.</p>
+<h2 id="user-personas-arquetipos">33.2 User Personas (Arquetipos)</h2>
+<ol type="1">
+<li><strong>Ana (Empleado Corporativo)</strong>: Preocupada por la
+privacidad de sus datos pero busca entender sus síntomas.</li>
+<li><strong>Carlos (Gerente de RRHH)</strong>: Necesita entender
+tendencias grupales sin invadir la privacidad individual.</li>
+<li><strong>Mario (Investigador)</strong>: Busca datos precisos y
+consistentes para sus estudios de salud laboral.</li>
+</ol>
+<h2 id="diseño-visual-y-psicología-del-color">33.3 Diseño Visual y
+Psicología del Color</h2>
+<ul>
+<li><strong>Paleta de Azules</strong>: Transmite confianza, calma y
+profesionalismo médico.</li>
+<li><strong>Tipografía (Inter/Outfit)</strong>: Alta legibilidad para
+reducir la fatiga visual.</li>
+<li><strong>Micro-animaciones</strong>: Proporcionan feedback positivo
+(“recompensa cognitiva”) al avanzar en la encuesta.</li>
+</ul>
+<h2 id="arquitectura-de-la-información-y-navegación">33.4 Arquitectura
+de la Información y Navegación</h2>
+<pre class="mermaid"><code>graph TD
+    Entry[Punto de Entrada] --&gt; Clarity[Claridad del Propósito]
+    Clarity --&gt; Engagement[Engagement: Encuesta]
+    Engagement --&gt; Reward[Valor: Resultados IA]</code></pre>
+<h2 id="feedback-loop-de-usabilidad">33.5 Feedback Loop de
+Usabilidad</h2>
+<p>El sistema incluye mecanismos indirectos de medición (como el tiempo
+de respuesta por pregunta) para identificar fricciones en el flujo de
+usuario y optimizar la redacción de ítems de la encuesta.</p>
+<hr />
+<h1
+id="ieee-1016---34.-seguridad-de-api-y-limitación-de-tasa-rate-limiting">IEEE
+1016 - 34. Seguridad de API y Limitación de Tasa (Rate Limiting)</h1>
+<h2 id="protección-de-endpoints-expuestos">34.1 Protección de Endpoints
+Expuestos</h2>
+<p>Aunque MindCare es principalmente una aplicación web, sus rutas
+funcionan como una API que debe ser protegida contra el abuso y ataques
+automatizados.</p>
+<h2 id="estrategias-de-defensa">34.2 Estrategias de Defensa</h2>
+<ol type="1">
+<li><strong>Protección contra Fuerza Bruta</strong>: Límite de intentos
+de login fallidos por IP (Planificado mediante middleware).</li>
+<li><strong>Mitigación de Scrapping</strong>: Estructura de navegación
+que dificulta la extracción masiva de datos mediante bots.</li>
+<li><strong>Encabezados de Seguridad (HTTP Headers)</strong>:
+<ul>
+<li><code>X-Frame-Options: DENY</code> (Previene Clickjacking).</li>
+<li><code>X-Content-Type-Options: nosniff</code>.</li>
+<li><code>Content-Security-Policy</code>.</li>
+</ul></li>
+</ol>
+<h2 id="plan-de-limitación-de-tasa-rate-limiting">34.3 Plan de
+Limitación de Tasa (Rate Limiting)</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">Límite Sugerido</th>
+<th style="text-align: left;">Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Login</strong></td>
+<td style="text-align: left;">5 intentos / 5 min</td>
+<td style="text-align: left;">Prevenir cracking de contraseñas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Envío de Encuesta</strong></td>
+<td style="text-align: left;">1 envío / 10 min</td>
+<td style="text-align: left;">Evitar la saturación del motor de IA con
+datos basura.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Búsqueda Admin</strong></td>
+<td style="text-align: left;">30 solicitudes / min</td>
+<td style="text-align: left;">Prevenir la extracción masiva de
+información de usuarios.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagrama-de-seguridad-de-capas">34.4 Diagrama de Seguridad de
+Capas</h2>
+<pre class="mermaid"><code>graph TD
+    Client[Cliente/Atacante] --&gt; Net[Capa de Red: HTTPS]
+    Net --&gt; Firewall[Middleware de Seguridad]
+    Firewall --&gt; Logic[Lógica de Aplicación]
+    Logic --&gt; Data[Acceso a Datos]</code></pre>
+<h2 id="monitoreo-de-abuso">34.5 Monitoreo de Abuso</h2>
+<p>El sistema registra patrones de solicitud inusuales en los logs para
+que el administrador pueda identificar y bloquear rangos de IPs
+malintencionadas manualmente si es necesario.</p>
+<hr />
+<h1
+id="ieee-1016---35.-herramientas-de-desarrollo-y-stack-tecnológico-detallado">IEEE
+1016 - 35. Herramientas de Desarrollo y Stack Tecnológico Detallado</h1>
+<h2 id="ecosistema-de-desarrollo">35.1 Ecosistema de Desarrollo</h2>
+<p>MindCare se construye sobre un stack moderno que equilibra la
+robustez empresarial con la agilidad de la investigación científica.</p>
+<h2 id="desglose-tecnológico">35.2 Desglose Tecnológico</h2>
+<h3 id="backend-capa-de-poder">Backend (Capa de Poder)</h3>
+<ul>
+<li><strong>Lenguaje</strong>: Python 3.10+ (Tipado dinámico, ecosistema
+de IA líder).</li>
+<li><strong>Framework</strong>: Django 6.0 (Arquitectura MVT, seguridad
+integrada).</li>
+<li><strong>IA/ML</strong>: Scikit-Learn (Bosques aleatorios), Joblib
+(Serialización), Pandas (ETL).</li>
+</ul>
+<h3 id="frontend-capa-de-experiencia">Frontend (Capa de
+Experiencia)</h3>
+<ul>
+<li><strong>Estructura</strong>: HTML5 Semántico.</li>
+<li><strong>Estilo</strong>: Vanilla CSS 3 (Flexbox, Grid, Variables
+CSS).</li>
+<li><strong>Interactividad</strong>: JavaScript ES6+ (AJAX, Fetch
+API).</li>
+<li><strong>Visualización</strong>: Chart.js (Dashboard analítico).</li>
+</ul>
+<h3 id="base-de-datos-y-persistencia">Base de Datos y Persistencia</h3>
+<ul>
+<li><strong>Motor</strong>: SQLite 3 (Cero-configuración, ideal para
+investigación y prototipado).</li>
+<li><strong>Abstracción</strong>: Django ORM (Independencia de motor de
+DB).</li>
+</ul>
+<h2 id="herramientas-de-soporte">35.3 Herramientas de Soporte</h2>
+<pre class="mermaid"><code>mindmap
+  root((Herramientas))
+    Control de Versiones
+      Git
+      GitHub/GitLab
+    Entorno Virtual
+      venv
+      pip
+    Documentación
+      Mermaid.js
+      Markdown
+    Servidor de Desarrollo
+      Django Runserver
+      Gunicorn (Prod)</code></pre>
+<h2 id="justificación-del-stack">35.4 Justificación del Stack</h2>
+<p>La elección de herramientas abiertas y ampliamente documentadas
+asegura que el proyecto pueda ser mantenido por equipos diversos sin
+dependencia de licencias propietarias costosas, facilitando su adopción
+en instituciones públicas y académicas.</p>
+<hr />
+<h1 id="ieee-1016---36.-estrategia-de-monitoreo-y-observabilidad">IEEE
+1016 - 36. Estrategia de Monitoreo y Observabilidad</h1>
+<h2 id="visibilidad-del-sistema">36.1 Visibilidad del Sistema</h2>
+<p>Para garantizar la alta disponibilidad de MindCare, se implementa una
+estrategia de monitoreo que cubre desde la salud del hardware hasta el
+rendimiento del modelo de IA.</p>
+<h2 id="niveles-de-observabilidad">36.2 Niveles de Observabilidad</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Nivel</th>
+<th style="text-align: left;">Métrica Crítica</th>
+<th style="text-align: left;">Herramienta / Método</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Infraestructura</strong></td>
+<td style="text-align: left;">Uso de CPU/RAM, Espacio en Disco.</td>
+<td style="text-align: left;">OS Logs / Monitoreo Externo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Aplicación</strong></td>
+<td style="text-align: left;">Tiempos de respuesta (Latency), Errores
+500/404.</td>
+<td style="text-align: left;">Django Logging (<code>LOGGING</code> en
+settings).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>IA (ML)</strong></td>
+<td style="text-align: left;">Cantidad de predicciones,
+Inconsistencias.</td>
+<td style="text-align: left;">Logs de auditoría de inferencia.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Usuario</strong></td>
+<td style="text-align: left;">Tasa de finalización de encuesta.</td>
+<td style="text-align: left;">Analíticas internas de base de datos.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gestión-de-logs-y-alertas">36.3 Gestión de Logs y Alertas</h2>
+<pre class="mermaid"><code>graph TD
+    User[Interacción Usuario] --&gt; App[Aplicación Django]
+    App --&gt;|Log Event| File[(Archivo de Logs)]
+    App --&gt;|Error Crítico| Alert[Notificación Admin]
+    
+    File --&gt; Analysis[Análisis de Tendencias]
+    Analysis --&gt; Improvement[Optimización Continua]</code></pre>
+<h2 id="trazabilidad-de-errores">36.4 Trazabilidad de Errores</h2>
+<p>El sistema utiliza el sistema de logging de Django para capturar
+trazas de errores de Python integrales, facilitando el diagnóstico
+rápido (Root Cause Analysis) sin exponer información sensible al usuario
+final en la interfaz.</p>
+<h2 id="monitoreo-del-sesgo-ia-model-monitoring">36.5 Monitoreo del
+Sesgo IA (Model Monitoring)</h2>
+<p>Se registran las distribuciones de las predicciones para detectar
+“Concept Drift” (cambios en el patrón de los datos) que pudieran indicar
+que el modelo necesita un re-entrenamiento urgente para mantener su
+precisión.</p>
+<hr />
+<h1
+id="ieee-1016---37.-plan-de-capacitación-y-transferencia-de-conocimiento">IEEE
+1016 - 37. Plan de Capacitación y Transferencia de Conocimiento</h1>
+<h2 id="objetivo-de-capacitación">37.1 Objetivo de Capacitación</h2>
+<p>Asegurar que los diferentes perfiles involucrados en MindCare puedan
+operar, mantener y evolucionar la plataforma de manera autónoma.</p>
+<h2 id="perfiles-y-temas-de-capacitación">37.2 Perfiles y Temas de
+Capacitación</h2>
+<h3 id="administradores-del-sistema">administradores del Sistema</h3>
+<ul>
+<li><strong>Contenido</strong>: Gestión de usuarios, interpretación del
+dashboard, manejo de backups y actualizaciones.</li>
+<li><strong>Formato</strong>: Manual de operación (Sección 14) y
+talleres prácticos.</li>
+</ul>
+<h3 id="científicos-de-datos-investigadores">Científicos de Datos /
+Investigadores</h3>
+<ul>
+<li><strong>Contenido</strong>: Metodología de entrenamiento del Random
+Forest, actualización de archivos <code>.joblib</code> y análisis de
+métricas de IA.</li>
+<li><strong>Formato</strong>: Documentación de detalle de IA (Sección
+04) y acceso al notebook de entrenamiento original.</li>
+</ul>
+<h3 id="desarrolladores-mantenimiento">Desarrolladores
+(Mantenimiento)</h3>
+<ul>
+<li><strong>Contenido</strong>: Arquitectura MVT, flujo de validación de
+formularios y despliegue técnico.</li>
+<li><strong>Formato</strong>: Guía de instalación (Sección 20) y
+revisión del código fuente documentado.</li>
+</ul>
+<h2 id="proceso-de-onboarding-técnico">37.3 Proceso de Onboarding
+Técnico</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant New[Nuevo Developer]
+    participant Env[Entorno Local]
+    participant Docs[IEEE Documentation]
+    
+    New-&gt;&gt;Docs: Lectura General (Secciones 1-5)
+    New-&gt;&gt;Env: Instalación mediante Manual (Sección 20)
+    New-&gt;&gt;Env: Ejecución de Pruebas (Sección 9)
+    New--&gt;&gt;New: Desarrollo de Small Feature / Fix</code></pre>
+<h2 id="repositorio-de-conocimiento">37.4 Repositorio de
+Conocimiento</h2>
+<p>Toda la ingeniería reside en este hub de documentación bajo el
+estándar IEEE, garantizando que el “Bus Factor” sea minimizado y el
+capital intelectual del proyecto permanezca dentro del equipo de
+investigación.</p>
+<hr />
+<h1
+id="ieee-1016---38.-bibliografía-y-referencias-de-investigación">IEEE
+1016 - 38. Bibliografía y Referencias de Investigación</h1>
+<h2 id="base-científica-de-mindcare">38.1 Base Científica de
+MindCare</h2>
+<p>El desarrollo de este software no es empírico, sino que se apoya en
+literatura técnica y académica reconocida en los campos de la
+computación y la salud mental.</p>
+<h2 id="referencias-clave">38.2 Referencias Clave</h2>
+<h3 id="ingeniería-de-software">Ingeniería de Software</h3>
+<ul>
+<li><strong>IEEE Std 1016-2009</strong>: Standard for Information
+Technology - Systems Design - Software Design Descriptions.</li>
+<li><strong>Django Software Foundation</strong>: Official Documentation
+for Django Framework 6.0.</li>
+<li><strong>Gamma, E. et al.</strong>: “Design Patterns: Elements of
+Reusable Object-Oriented Software”.</li>
+</ul>
+<h3 id="inteligencia-artificial-y-salud">Inteligencia Artificial y
+Salud</h3>
+<ul>
+<li><strong>Pedregosa, F. et al.</strong>: “Scikit-learn: Machine
+Learning in Python”, Journal of Machine Learning Research.</li>
+<li><strong>Breiman, L.</strong>: “Random Forests”, Machine Learning
+Journal.</li>
+<li><strong>Dataset</strong>: Mental Health in Tech Survey (Kaggle/Open
+Sourced), base del entrenamiento inicial del modelo.</li>
+</ul>
+<h2 id="mapa-de-influencia-académica">38.3 Mapa de Influencia
+Académica</h2>
+<pre class="mermaid"><code>graph TD
+    IEEE[IEEE 1016 Standard] --&gt; Architecture[Arquitectura del Sistema]
+    DSF[Django Docs] --&gt; Architecture
+    
+    MLP[Machine Learning Papers] --&gt; AI_Engine[Motor IA MindCare]
+    Survey[Psychology Datasets] --&gt; AI_Engine
+    
+    Architecture --- AI_Engine</code></pre>
+<h2 id="recursos-adicionales">38.4 Recursos Adicionales</h2>
+<ul>
+<li><strong>OWASP</strong>: Guías para el desarrollo web seguro.</li>
+<li><strong>W3C</strong>: Estándares WCAG para la accesibilidad
+integrada en la herramienta.</li>
+</ul>
+<hr />
+<h1 id="ieee-1016---39.-código-de-conducta-y-guías-de-contribución">IEEE
+1016 - 39. Código de Conducta y Guías de Contribución</h1>
+<h2 id="propósito-2">39.1 Propósito</h2>
+<p>MindCare es un proyecto de investigación colaborativa. Estas guías
+aseguran un entorno de desarrollo profesional, ético e inclusivo para
+todos los investigadores y desarrolladores.</p>
+<h2 id="código-de-conducta">39.2 Código de Conducta</h2>
+<ul>
+<li><strong>Respeto</strong>: Comunicación profesional en todo
+momento.</li>
+<li><strong>Integridad Científica</strong>: Prohibida la manipulación de
+datos o resultados de IA.</li>
+<li><strong>Inclusión</strong>: Valoración de diversas perspectivas en
+salud mental y tecnología.</li>
+<li><strong>Privacidad</strong>: Respeto absoluto por los datos de los
+usuarios del sistema.</li>
+</ul>
+<h2 id="proceso-para-contribuidores">39.3 Proceso para
+Contribuidores</h2>
+<pre class="mermaid"><code>graph TD
+    Issue[Identificar Mejora/Bugs] --&gt; Branch[Crear Rama: feature/...]
+    Branch --&gt; Code[Desarrollo Siguiendo PEP8]
+    Code --&gt; Tests[Ejecutar Pruebas Locales]
+    Tests --&gt; PR[Crear Pull Request]
+    PR --&gt; Review[Revisión por Pares]
+    Review --&gt; Merge[Fusión a Main]</code></pre>
+<h2 id="estándares-de-documentación-de-código">39.4 Estándares de
+Documentación de Código</h2>
+<ul>
+<li>Toda nueva función debe incluir un <strong>Docstring</strong>
+claro.</li>
+<li>Cambios en la arquitectura deben reflejarse inmediatamente en este
+hub IEEE.</li>
+<li>Se prefiere el uso de comentarios explicativos en bloques de código
+de lógica compleja (especialmente en <code>ml_utils.py</code>).</li>
+</ul>
+<h2 id="comunicación-del-equipo">39.5 Comunicación del Equipo</h2>
+<p>El equipo utiliza canales de comunicación rápidos para discusiones
+técnicas y reuniones semanales para la revisión de metas de
+investigación de CINTIA.</p>
+<hr />
+<h1 id="ieee-1016---40.-gestión-de-errores-y-excepciones">IEEE 1016 -
+40. Gestión de Errores y Excepciones</h1>
+<h2 id="filosofía-de-manejo-de-errores">40.1 Filosofía de Manejo de
+Errores</h2>
+<p>MindCare utiliza un enfoque de “Falla Segura” (Fail-Safe), donde
+cualquier error técnico debe ser capturado para evitar la exposición de
+trazas de código al usuario y garantizar que el servicio de salud mental
+no se interrumpa abruptamente.</p>
+<h2 id="categorización-de-excepciones">40.2 Categorización de
+Excepciones</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo de Error</th>
+<th style="text-align: left;">Ejemplo</th>
+<th style="text-align: left;">Acción del Sistema</th>
+<th style="text-align: left;">Feedback al Usuario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Validación</strong></td>
+<td style="text-align: left;">Email mal formado.</td>
+<td style="text-align: left;">Bloqueo en Formulario.</td>
+<td style="text-align: left;">“Por favor, ingrese un correo
+válido”.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inferencia</strong></td>
+<td style="text-align: left;">Modelo IA no cargado.</td>
+<td style="text-align: left;">Log de error severo + Fallback.</td>
+<td style="text-align: left;">“Estamos procesando su solicitud,
+espere”.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Persistencia</strong></td>
+<td style="text-align: left;">Fallo en escritura DB.</td>
+<td style="text-align: left;">Reintento automático / Rollback.</td>
+<td style="text-align: left;">“Hubo un problema al guardar los
+datos”.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Autorización</strong></td>
+<td style="text-align: left;">Acceso a <code>/users/</code> sin ser
+Admin.</td>
+<td style="text-align: left;">Redirección 403 / Login.</td>
+<td style="text-align: left;">“No tiene permisos para ver esta
+página”.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagrama-de-flujo-de-excepciones-de-ia">40.3 Diagrama de Flujo
+de Excepciones de IA</h2>
+<pre class="mermaid"><code>graph TD
+    Input[Entrada de Datos] --&gt; Predict[Preprocesamiento]
+    Predict --&gt;|Error de Formato| LogBad[Registrar ValidationError]
+    LogBad --&gt; AlertUser[Mostrar Ayuda Contextual]
+    
+    Predict --&gt; Model{¿Modelo OK?}
+    Model --&gt;|No| LogCritical[Log Crítico: FileNotFoundError]
+    LogCritical --&gt; Default[&quot;Usar Predicción por Defecto: &#39;Consultar experto&#39;&quot;]
+    
+    Model --&gt;|Sí| Success[Resultado Generado]
+</code></pre>
+<h2 id="centralización-de-logs-de-error">40.4 Centralización de Logs de
+Error</h2>
+<p>Todos los errores de nivel <code>ERROR</code> y <code>CRITICAL</code>
+se envían a un archivo de logs rotativo para su revisión diaria por
+parte del equipo de mantenimiento, permitiendo la mejora continua del
+código.</p>
+<hr />
+<h1
+id="ieee-1016---41.-estrategia-de-escalabilidad-y-alta-disponibilidad">IEEE
+1016 - 41. Estrategia de Escalabilidad y Alta Disponibilidad</h1>
+<h2 id="visión-de-escalabilidad">41.1 Visión de Escalabilidad</h2>
+<p>MindCare ha sido diseñado considerando un crecimiento potencial desde
+un grupo piloto de usuarios hasta despliegues masivos en grandes
+corporaciones o sistemas de salud regionales.</p>
+<h2 id="escalabilidad-vertical-y-horizontal">41.2 Escalabilidad Vertical
+y Horizontal</h2>
+<h3 id="escalabilidad-vertical-upgrade-de-servidor">Escalabilidad
+Vertical (Upgrade de Servidor)</h3>
+<ul>
+<li>Optimización de los trabajadores del servidor Gunicorn para
+aprovechar múltiples núcleos de CPU.</li>
+<li>Ajuste de límites de memoria para el procesamiento de modelos de IA
+de mayor tamaño (XGBoost/Ensembles).</li>
+</ul>
+<h3 id="escalabilidad-horizontal-balanceo-de-carga">Escalabilidad
+Horizontal (Balanceo de Carga)</h3>
+<ul>
+<li><strong>Capa Web</strong>: Capacidad de desplegar múltiples
+instancias de la aplicación Django detrás de un balanceador de carga
+(Nginx/HAProxy).</li>
+<li><strong>Capa de IA</strong>: Separación de las inferencias pesadas a
+trabajadores asíncronos (Celery/Redis) si el volumen de encuestas supera
+las 100/minuto.</li>
+</ul>
+<h2 id="diagrama-de-arquitectura-escalable-futura">41.3 Diagrama de
+Arquitectura Escalable (Futura)</h2>
+<pre class="mermaid"><code>graph TD
+    User((Usuario)) --&gt; LB[Balanceador de Carga]
+    LB --&gt; Node1[MindCare Node A]
+    LB --&gt; Node2[MindCare Node B]
+    
+    Node1 --&gt; DB_Shared[(Database Cluster)]
+    Node2 --&gt; DB_Shared
+    
+    Node1 --&gt; AI_Worker[AI Task Worker]
+    Node2 --&gt; AI_Worker</code></pre>
+<h2 id="alta-disponibilidad-high-availability">41.4 Alta Disponibilidad
+(High Availability)</h2>
+<ul>
+<li><strong>Sesiones en Caché</strong>: Uso de Redis para compartir
+estados de sesión entre múltiples nodos de servidor.</li>
+<li><strong>Redundancia de Datos</strong>: Plan de migración de SQLite a
+un clúster de base de datos gestionada (PostgreSQL con réplicas de
+lectura).</li>
+</ul>
+<h2 id="mitigación-de-cuellos-de-botella">41.5 Mitigación de Cuellos de
+Botella</h2>
+<p>Se han identificado las tareas de preprocesamiento de datos y la
+generación de gráficos pesados en el dashboard como los puntos de mayor
+consumo, los cuales se optimizan mediante ejecución en el lado del
+cliente (Client-side rendering) donde es técnicamente viable.</p>
+<hr />
+<h1 id="ieee-1016---42.-sistema-de-diseño-ux-y-tokens-visuales">IEEE
+1016 - 42. Sistema de Diseño UX y Tokens Visuales</h1>
+<h2 id="diseño-sistemático">42.1 Diseño Sistemático</h2>
+<p>MindCare utiliza un sistema de diseño propio para garantizar la
+coherencia visual y facilitar la escalabilidad del frontend sin
+duplicación de estilos.</p>
+<h2 id="tokens-de-diseño-variables-css">42.2 Tokens de Diseño (Variables
+CSS)</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Token</th>
+<th style="text-align: left;">Valor / Color</th>
+<th style="text-align: left;">Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--primary-color</code></td>
+<td style="text-align: left;">Azul Profundo / Teal</td>
+<td style="text-align: left;">Identidad, Confianza, Botones
+Principales.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--secondary-color</code></td>
+<td style="text-align: left;">Azul Suave</td>
+<td style="text-align: left;">Calma, Gráficos de soporte, Fondos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--danger</code></td>
+<td style="text-align: left;">Rojo Suave</td>
+<td style="text-align: left;">Errores, Advertencias de Salud.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--success</code></td>
+<td style="text-align: left;">Verde Bosque</td>
+<td style="text-align: left;">Confirmaciones, Buenos indicadores.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--shadow</code></td>
+<td style="text-align: left;">0 4px 6px rgba(0,0,0,0.1)</td>
+<td style="text-align: left;">Profundidad y jerarquía visual.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="biblioteca-de-componentes">42.3 Biblioteca de Componentes</h2>
+<ul>
+<li><strong>Tarjetas de Autor</strong>: Diseño responsivo con efectos de
+levitación (Hovers).</li>
+<li><strong>Steppers de Encuesta</strong>: Indicadores de progreso
+visual para evitar la saturación del usuario.</li>
+<li><strong>Badges de Rol</strong>: Etiquetas de color (Admin/Usuario)
+para identificación instantánea en tablas.</li>
+<li><strong>Modales de Login/Registro</strong>: Diálogos ligeros que no
+interrumpen el flujo principal de navegación.</li>
+</ul>
+<h2 id="diagrama-del-design-system">42.4 Diagrama del Design System</h2>
+<pre class="mermaid"><code>graph TD
+    Tokens[Tokens: Colores/Tipografía] --&gt; Atoms[Botones/Inputs/Iconos]
+    Atoms --&gt; Molecules[Formularios/Cards]
+    Molecules --&gt; Organisms[Navbar/Result Dashboard]
+    Organisms --&gt; Templates[Páginas: Home/Survey]</code></pre>
+<h2 id="adaptabilidad-y-accesibilidad-visual">42.5 Adaptabilidad y
+Accesibilidad Visual</h2>
+<p>El sistema de diseño ha sido probado para cumplir con el ratio de
+contraste <strong>AA</strong> (4.5:1) según las normas WCAG, asegurando
+que el contenido sea legible para usuarios con baja visión o bajo
+diversas condiciones de iluminación.</p>
+<hr />
+<h1
+id="ieee-1016---43.-gestión-de-stakeholders-y-actores-de-investigación">IEEE
+1016 - 43. Gestión de Stakeholders y Actores de Investigación</h1>
+<h2 id="identificación-de-actores-clave">43.1 Identificación de Actores
+Clave</h2>
+<p>En un proyecto de salud mental e IA como MindCare, la gestión de los
+interesados es fundamental para asegurar el éxito ético y técnico del
+software.</p>
+<h2 id="mapa-de-stakeholders-matriz-de-interésinfluencia">43.2 Mapa de
+Stakeholders (Matriz de Interés/Influencia)</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Stakeholder</th>
+<th style="text-align: left;">Interés</th>
+<th style="text-align: left;">Influencia</th>
+<th style="text-align: left;">Rol en el Proyecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Grupo Sócrates</strong></td>
+<td style="text-align: left;">Muy Alto</td>
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">Propietarios de la IP y líderes de
+investigación.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CINTIA</strong></td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">Proveedores de infraestructura y visión de
+IA.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Usuarios Finales</strong></td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Beneficiarios del diagnóstico y fuentes de
+datos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Especialistas en
+Salud</strong></td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;">Validadores de la lógica clínica de la
+encuesta.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Desarrolladores</strong></td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">Ejecutores de la visión técnica y
+mantenimiento.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="estrategia-de-comunicación">43.3 Estrategia de Comunicación</h2>
+<pre class="mermaid"><code>graph TD
+    Socrates[Grupo Sócrates] --- Meetings[Reuniones de Dirección]
+    CINTIA[CINTIA] --- TechReview[Revisiones Técnicas]
+    Users[Usuarios] --- Feedback[Canales de Feedback]
+    Devs[Developers] --- GitDocs[GitHub / Documentación IEEE]
+    
+    Meetings --&gt; Strateg[Estrategia Longeva]
+    TechReview --&gt; Robust[Robustez IA]
+    Feedback --&gt; Usability[Mejora UX]
+    GitDocs --&gt; Maintenance[Mantenibilidad]</code></pre>
+<h2 id="canales-de-colaboración">43.4 Canales de Colaboración</h2>
+<ul>
+<li><strong>Nivel Estratégico</strong>: Comités mensuales de revisión de
+avances de CINTIA.</li>
+<li><strong>Nivel Operativo</strong>: Sprints de desarrollo coordinados
+mediante herramientas de gestión ágil.</li>
+<li><strong>Nivel Científico</strong>: Repositorios de datos controlados
+para el re-entrenamiento del modelo.</li>
+</ul>
+<h2 id="gestión-de-expectativas">43.5 Gestión de Expectativas</h2>
+<p>Se establece claramente que MindCare es una <strong>herramienta de
+soporte</strong>, no un diagnóstico médico final, alineando las
+expectativas de todos los interesados con las capacidades reales del
+modelo de IA implementado.</p>
+<hr />
+<h1
+id="ieee-1016---44.-visión-de-arquitectura-de-microservicios-futura">IEEE
+1016 - 44. Visión de Arquitectura de Microservicios (Futura)</h1>
+<h2 id="justificación-de-la-transición">44.1 Justificación de la
+Transición</h2>
+<p>Aunque actualmente MindCare opera como un monolito modular (Django),
+el crecimiento masivo proyectado sugiere una transición hacia
+microservicios para permitir el escalado independiente del motor de IA
+del frontend.</p>
+<h2 id="descomposición-de-servicios-propuesta">44.2 Descomposición de
+Servicios Propuesta</h2>
+<ol type="1">
+<li><strong>Auth Service</strong>: Registro y autenticación
+centralizada.</li>
+<li><strong>Survey Engine Service</strong>: Gestión de preguntas y
+recolección de respuestas.</li>
+<li><strong>AI Influx Service</strong>: Motor de inferencia (Random
+Forest/XGBoost) expuesto vía FastAPI.</li>
+<li><strong>Analytics / Admin Service</strong>: Dashboard y generación
+de reportes masivos.</li>
+</ol>
+<h2 id="infraestructura-de-comunicación-event-driven">44.3
+Infraestructura de Comunicación (Event-Driven)</h2>
+<pre class="mermaid"><code>graph LR
+    UI[Frontend / Mobile] --&gt; Gateway[API Gateway]
+    Gateway --&gt; Auth[Auth Service]
+    Gateway --&gt; Survey[Survey Service]
+    Survey --&gt; MessageBus{Message Bus / RabbitMQ}
+    MessageBus --&gt; AI[AI Engine Service]
+    AI --&gt; History[(History DB)]</code></pre>
+<h2 id="beneficios-de-esta-visión">44.4 Beneficios de esta Visión</h2>
+<ul>
+<li><strong>Políglota</strong>: Posibilidad de escribir el motor de IA
+en Python especializado y el frontend en tecnologías más rápidas como Go
+o Node.js.</li>
+<li><strong>Resiliencia</strong>: Si el motor de IA falla, los usuarios
+pueden seguir registrándose o consultando el historial previo.</li>
+<li><strong>Escalado bajo demanda</strong>: Asignar más recursos solo al
+servicio de IA durante picos de uso (ej. campañas de salud corporativas
+masivas).</li>
+</ul>
+<h2 id="hoja-de-ruta-de-transición">44.5 Hoja de Ruta de Transición</h2>
+<p>Esta transición se planifica como una evolución orgánica,
+aprovechando la modularidad actual del código de Django para extraer
+servicios paso a paso sin interrumpir la operación actual.</p>
+<hr />
+<h1 id="ieee-1016---45.-plan-de-comunicación-de-crisis-técnica">IEEE
+1016 - 45. Plan de Comunicación de Crisis (Técnica)</h1>
+<h2 id="propósito-3">45.1 Propósito</h2>
+<p>Establecer los protocolos de comunicación y acción ante fallos
+críticos que afecten la integridad de los datos de salud mental de los
+usuarios o la disponibilidad total del sistema.</p>
+<h2 id="niveles-de-crisis-y-respuesta">45.2 Niveles de Crisis y
+Respuesta</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Nivel</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Acción Técnica</th>
+<th style="text-align: left;">Acción de Comunicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>L1 (Bajo)</strong></td>
+<td style="text-align: left;">Errores visuales menores.</td>
+<td style="text-align: left;">Fix en próximo deploy.</td>
+<td style="text-align: left;">Sin comunicación externa.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>L2 (Medio)</strong></td>
+<td style="text-align: left;">Inferencia de IA lenta.</td>
+<td style="text-align: left;">Escalado de recursos.</td>
+<td style="text-align: left;">Notificación en el Dashboard.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>L3 (Alto)</strong></td>
+<td style="text-align: left;">Base de datos inaccesible.</td>
+<td style="text-align: left;">Restauración de Backup.</td>
+<td style="text-align: left;">Email a usuarios registrados.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CRÍTICO</strong></td>
+<td style="text-align: left;">Fuga de datos (Breach).</td>
+<td style="text-align: left;">Cierre total / Investigación.</td>
+<td style="text-align: left;">Comunicación legal / Grupos de
+Interés.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flujo-de-gestión-de-incidentes-críticos">45.3 Flujo de Gestión
+de Incidentes Críticos</h2>
+<pre class="mermaid"><code>graph TD
+    Monitor[Detección de Anomalía] --&gt; Triage[Triaje de Gravedad]
+    Triage --&gt;|Crítico| Shutdown[Cierre Preventivo del Servicio]
+    Shutdown --&gt; Analyze[Investigación Forense]
+    Analyze --&gt; Patch[Corrección de Vulnerabilidad]
+    Patch --&gt; Recovery[Restauración y Verificación]
+    Recovery --&gt; PostMortem[Análisis Post-Mortem]</code></pre>
+<h2 id="responsabilidades">45.4 Responsabilidades</h2>
+<ul>
+<li><strong>Responsable de Infraestructura</strong>: Lidera la
+restauración técnica.</li>
+<li><strong>Responsable de Privacidad</strong>: Gestiona las
+implicaciones éticas y legales de la crisis.</li>
+<li><strong>Portavoz del Grupo Sócrates</strong>: Gestiona la
+comunicación oficial con el exterior.</li>
+</ul>
+<h2 id="registro-de-incidentes-incident-log">45.5 Registro de Incidentes
+(Incident Log)</h2>
+<p>Toda crisis debe ser documentada detalladamente en un registro
+interno, especificando la causa raíz, el tiempo de respuesta y las
+lecciones aprendidas para actualizar la sección de Gestión de Riesgos
+(Sección 11).</p>
+<hr />
+<h1 id="ieee-1016---46.-resumen-ejecutivo-de-ingeniería-mindcare">IEEE
+1016 - 46. Resumen Ejecutivo de Ingeniería MindCare</h1>
+<h2 id="conclusión-técnica-del-proyecto">46.1 Conclusión Técnica del
+Proyecto</h2>
+<p>MindCare representa la convergencia exitosa entre la ingeniería de
+software moderna, la ciencia de datos y la ética aplicada a la salud
+mental.</p>
+<h2 id="puntos-fuertes-de-la-ingeniería">46.2 Puntos Fuertes de la
+Ingeniería</h2>
+<ul>
+<li><strong>Mantenibilidad</strong>: Basada en un estándar internacional
+(<strong>IEEE 1016</strong>) con 46 secciones detalladas.</li>
+<li><strong>Robustez</strong>: Arquitectura Django probada, segura por
+diseño y fácil de escalar.</li>
+<li><strong>Innovación</strong>: Motor de IA con Random Forest integrado
+directamente en el flujo de negocio.</li>
+<li><strong>Ética</strong>: Privacidad por diseño, anonimización y
+transparencia algorítmica.</li>
+</ul>
+<h2 id="resumen-visual-del-ecosistema">46.3 Resumen Visual del
+Ecosistema</h2>
+<pre class="mermaid"><code>graph TD
+    User((Usuario)) --- App[MindCare Platform]
+    App --- IA[Motor de IA CINTIA]
+    App --- Docs[Hub de Ingeniería IEEE]
+    App --- Community[Grupo Sócrates]
+    
+    IA --&gt; Science[Base Científica]
+    Docs --&gt; Quality[Calidad ISO/IEEE]
+    Community --&gt; Sustainability[Impacto Social]</code></pre>
+<h2 id="cifras-clave-del-diseño">46.4 Cifras Clave del Diseño</h2>
+<ul>
+<li><strong>Secciones de Ingeniería</strong>: 46 archivos técnicos
+exhaustivos.</li>
+<li><strong>Arquitectura</strong>: Model-View-Template (MVT).</li>
+<li><strong>Modelo IA</strong>: Random Forest (16 dimensiones de
+análisis).</li>
+<li><strong>Accesibilidad</strong>: Cumplimiento WCAG 2.1 (AA).</li>
+</ul>
+<h2 id="palabras-finales">46.5 Palabras Finales</h2>
+<p>La ingeniería aquí documentada no es solo un plano técnico; es el
+fundamento de una herramienta capaz de transformar vidas, garantizando
+que cada línea de código contribuya a un futuro con mayor bienestar
+mental y soporte tecnológico responsable.</p>
+<hr />
+<h1 id="ieee-1016---47.-gestión-de-la-deuda-técnica">IEEE 1016 - 47.
+Gestión de la Deuda Técnica</h1>
+<h2 id="filosofía-de-desarrollo-sostenible">47.1 Filosofía de Desarrollo
+Sostenible</h2>
+<p>MindCare reconoce que en el desarrollo de software ágil es natural
+incurrir en deuda técnica. Esta sección describe cómo se identifica,
+documenta y paga dicha deuda para evitar la entropía del sistema.</p>
+<h2 id="identificación-de-deuda-técnica">47.2 Identificación de Deuda
+Técnica</h2>
+<ul>
+<li><strong>Código Duplicado</strong>: Detectado mediante análisis
+estático.</li>
+<li><strong>Placeholder Logic</strong>: Secciones marcadas con
+<code># TODO</code> o <code># FIXME</code>.</li>
+<li><strong>Obsolescencia</strong>: Uso de versiones de librerías que
+pronto dejarán de recibir soporte.</li>
+<li><strong>Deuda de IA</strong>: Modelos que necesitan ser actualizados
+conforme cambian los patrones de datos (Data Drift).</li>
+</ul>
+<h2 id="estrategia-de-mitigación-cuadrante-de-fowler">47.3 Estrategia de
+Mitigación (Cuadrante de Fowler)</h2>
+<pre class="mermaid"><code>graph TD
+    A[Inprudente / Intencional] --- B[Prudente / Intencional]
+    C[Imprudente / Inadvertida] --- D[Prudente / Inadvertida]
+    
+    style B fill:#d4edda,stroke:#28a745
+    note[MindCare prioriza la deuda Prudente/Intencional]</code></pre>
+<h2 id="registro-de-deuda-technical-debt-backlog">47.4 Registro de Deuda
+(Technical Debt Backlog)</h2>
+<p>Existe un listado priorizado de mejoras técnicas que no afectan la
+funcionalidad actual pero optimizarán el mantenimiento futuro: 1.
+<strong>Refactorización de vistas</strong>: Separar lógica de negocio de
+las vistas de Django. 2. <strong>Optimización de Queries</strong>:
+Reducción de llamadas redundantes a la base de datos en el Dashboard. 3.
+<strong>Mantenimiento de Modelos</strong>: Proceso de limpieza de
+modelos de IA antiguos.</p>
+<h2 id="ceremonias-de-pago-de-deuda">47.5 Ceremonias de Pago de
+Deuda</h2>
+<p>Cada mes se asigna un “Sprint de Mantenimiento” (o el 10% del
+esfuerzo del proyecto) exclusivamente para resolver ítems del backlog de
+deuda técnica, asegurando que el software permanezca limpio y escalable
+a largo plazo.</p>
+<hr />
+<h1
+id="ieee-1016---48.-análisis-de-impacto-en-infraestructura-y-costos-finops">IEEE
+1016 - 48. Análisis de Impacto en Infraestructura y Costos (FinOps)</h1>
+<h2 id="optimización-de-recursos">48.1 Optimización de Recursos</h2>
+<p>MindCare se diseña para ser eficiente no solo en rendimiento, sino
+también en el uso de recursos computacionales y económicos (Cultura
+FinOps).</p>
+<h2
+id="análisis-de-costos-proyectados-infraestructura-local-vs-cloud">48.2
+Análisis de Costos Proyectados (Infraestructura Local vs Cloud)</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Recurso</th>
+<th style="text-align: left;">Escenario Local</th>
+<th style="text-align: left;">Escenario Cloud (AWS/Azure)</th>
+<th style="text-align: left;">Impacto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Cómputo (CPU/RAM)</strong></td>
+<td style="text-align: left;">Bajo (Servidor propio).</td>
+<td style="text-align: left;">Variable (Instancia EC2/VM).</td>
+<td style="text-align: left;">Medio</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Almacenamiento</strong></td>
+<td style="text-align: left;">Fijo.</td>
+<td style="text-align: left;">Pago por GB utilizado.</td>
+<td style="text-align: left;">Bajo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Motor de IA</strong></td>
+<td style="text-align: left;">Procesamiento CPU local.</td>
+<td style="text-align: left;">Serverless / SageMaker.</td>
+<td style="text-align: left;">Alto</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mantenimiento</strong></td>
+<td style="text-align: left;">Alto (Personal In-Situ).</td>
+<td style="text-align: left;">Bajo (Servicios Gestionados).</td>
+<td style="text-align: left;">Compensatorio</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagrama-de-eficiencia-energética-green-it">48.3 Diagrama de
+Eficiencia Energética (Green IT)</h2>
+<pre class="mermaid"><code>graph LR
+    User[Usuario] --&gt; Net[Capa de Red Eficiente]
+    Net --&gt; Code[Código Optimizado Python]
+    Code --&gt; DB[Consultas SQLite Ligeras]
+    DB --&gt; LowEnergy[Menor Huella de Carbono]</code></pre>
+<h2 id="monitoreo-de-costos-cloud-financial-management">48.4 Monitoreo
+de Costos (Cloud Financial Management)</h2>
+<p>Si el software se despliega en la nube, se establecen presupuestos
+automáticos y alertas de consumo para evitar sobrecostos innecesarios
+durante picos de inferencia masiva de IA.</p>
+<h2 id="escalado-económico">48.5 Escalado Económico</h2>
+<p>La arquitectura modular permite que, en caso de restricciones
+presupuestarias, sea posible desactivar módulos secundarios (como el
+dashboard avanzado) manteniendo la funcionalidad núcleo de la encuesta y
+el motor de IA operativa.</p>
+<hr />
+<h1
+id="ieee-1016---49.-glosario-de-especialidad-en-salud-mental-dominio">IEEE
+1016 - 49. Glosario de Especialidad en Salud Mental (Dominio)</h1>
+<h2 id="propósito-4">49.1 Propósito</h2>
+<p>Dada la naturaleza híbrida de MindCare (Psicología + Tecnología),
+este glosario define los conceptos de dominio de salud mental analizados
+por el motor de IA.</p>
+<h2 id="conceptos-de-salud-mental-del-modelo">49.2 Conceptos de Salud
+Mental del Modelo</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Concepto</th>
+<th style="text-align: left;">Definición en el Contexto MindCare</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Interferencia
+Laboral</strong></td>
+<td style="text-align: left;">Grado en que la condición mental afecta la
+productividad o seguridad del individuo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Historial Familiar</strong></td>
+<td style="text-align: left;">Antecedentes de salud mental en la
+familia, variable clave para la predicción de riesgo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Consecuencias
+Mentales</strong></td>
+<td style="text-align: left;">Impacto percibido por el usuario sobre su
+carrera o relaciones al discutir su salud mental.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bienestar
+Psicosocial</strong></td>
+<td style="text-align: left;">Estado general de balance entre las
+demandas del entorno y las capacidades del individuo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Estigma Percibido</strong></td>
+<td style="text-align: left;">Barrera psicológica que impide al usuario
+buscar ayuda por miedo al juicio social o laboral.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ontología-del-dominio">49.3 Ontología del Dominio</h2>
+<pre class="mermaid"><code>graph TD
+    User((Usuario)) --- Psych[Estado Psicológico]
+    Psych --- Work[Entorno Laboral]
+    Psych --- Social[Entorno Social]
+    Work --- Productivity[Productividad]
+    Social --- Support[Soporte Familiar]</code></pre>
+<h2 id="relevancia-para-el-entrenamiento-de-ia">49.4 Relevancia para el
+Entrenamiento de IA</h2>
+<p>Cada término aquí definido corresponde a una o más variables dentro
+del conjunto de datos de entrenamiento, asegurando que la IA esté
+alineada con terminología psicológica profesional y no solo con
+etiquetas arbitrarias.</p>
+<hr />
+<h1
+id="ieee-1016---50.-certificaciones-cumplimiento-y-auditoría-compliance">IEEE
+1016 - 50. Certificaciones, Cumplimiento y Auditoría (Compliance)</h1>
+<h2 id="marco-de-cumplimiento-global">50.1 Marco de Cumplimiento
+Global</h2>
+<p>En su sección final, MindCare identifica los estándares de
+certificación que el software aspira a cumplir para su despliegue en
+entornos médicos y corporativos internacionales.</p>
+<h2 id="objetivos-de-certificación-y-cumplimiento">50.2 Objetivos de
+Certificación y Cumplimiento</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Estándar</th>
+<th style="text-align: left;">Ámbito</th>
+<th style="text-align: left;">Relevancia para MindCare</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>HIPAA (EE.UU.)</strong></td>
+<td style="text-align: left;">Salud</td>
+<td style="text-align: left;">Protección de datos de salud
+identificables.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GDPR (UE)</strong></td>
+<td style="text-align: left;">Privacidad</td>
+<td style="text-align: left;">Derecho al olvido y consentimiento
+explícito del usuario.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ISO 27001</strong></td>
+<td style="text-align: left;">Seguridad</td>
+<td style="text-align: left;">Gestión integral de la seguridad de la
+información.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ISO 25010</strong></td>
+<td style="text-align: left;">Calidad</td>
+<td style="text-align: left;">Estándar sobre la calidad del producto de
+software.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NIST AI RMF</strong></td>
+<td style="text-align: left;">Ética IA</td>
+<td style="text-align: left;">Marco de gestión de riesgos para sistemas
+de IA.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="proceso-de-auditoría-continua">50.3 Proceso de Auditoría
+Continua</h2>
+<pre class="mermaid"><code>graph TD
+    Design[Diseño Seguro] --&gt; Implement[Implementación]
+    Implement --&gt; Scan[Escaneo Automático: CVEs]
+    Scan --&gt; Audit[Auditoría Externa / Manual]
+    Audit --&gt; Cert[Certificación / Compliance]
+    Cert --&gt; Monitor[Monitoreo de Cumplimiento]
+    Monitor --&gt; Design</code></pre>
+<hr />
+
+<script>
+  document.querySelectorAll('pre.mermaid').forEach(pre => {
+    const code = pre.querySelector('code');
+    if (code) {
+      pre.textContent = code.textContent;
+    }
+  });
+</script>
+</body>
+
+</html>

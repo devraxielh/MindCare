@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center; max-width: 1000px; margin: 0 auto; padding: 2rem;">
+    <h1 style="color: var(--primary-color); font-size: 2.5rem; margin-bottom: 1rem;">Autores de MindCare</h1>
+    <p style="font-size: 1.2rem; color: #555; margin-bottom: 3rem;">
+        Investigadores del <strong>Grupo de Investigación Sócrates</strong> comprometidos con la Salud Mental y la
+        Inteligencia Artificial.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        <!-- Autor 1 -->
+        <div
+            style="background: white; border-radius: 16px; padding: 2rem; box-shadow: var(--shadow); transition: transform 0.3s ease;">
+            <div
+                style="width: 100px; height: 100px; background: #e2e8f0; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #cbd5e0;">
+                👤
+            </div>
+            <h3 style="margin-bottom: 0.5rem;">Rodrigo García, PhD</h3>
+            <p style="color: var(--primary-color); font-weight: bold; margin-bottom: 0.5rem;">Doctor en Inteligencia
+                Artificial</p>
+            <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">
+                Investigador del Grupo Sócrates, especializado en el desarrollo de algoritmos de aprendizaje automático
+                para aplicaciones.
+            </p>
+        </div>
+
+        <!-- Autor 2 -->
+        <div
+            style="background: white; border-radius: 16px; padding: 2rem; box-shadow: var(--shadow); transition: transform 0.3s ease;">
+            <div
+                style="width: 100px; height: 100px; background: #e2e8f0; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #cbd5e0;">
+                👤
+            </div>
+            <h3 style="margin-bottom: 0.5rem;">Samir Castaño, Mgs</h3>
+            <p style="color: var(--primary-color); font-weight: bold; margin-bottom: 0.5rem;">Magíster en Ing. de
+                Software</p>
+            <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">
+                Investigador del Grupo Sócrates, experto en arquitectura de software y desarrollo de sistemas
+                escalables.
+            </p>
+        </div>
+
+        <!-- Autor 3 -->
+        <div
+            style="background: white; border-radius: 16px; padding: 2rem; box-shadow: var(--shadow); transition: transform 0.3s ease;">
+            <div
+                style="width: 100px; height: 100px; background: #e2e8f0; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #cbd5e0;">
+                👤
+            </div>
+            <h3 style="margin-bottom: 0.5rem;">Mario Macea, PhD</h3>
+            <p style="color: var(--primary-color); font-weight: bold; margin-bottom: 0.5rem;">Director de CINTIA</p>
+            <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">
+                Investigador del Grupo Sócrates y Director de CINTIA, liderando iniciativas de innovación tecnológica.
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 4rem;">
+        <h2 style="color: var(--secondary-color); margin-bottom: 1.5rem;">Nuestra Misión</h2>
+        <p style="color: #444; line-height: 1.8; font-size: 1.1rem;">
+            MindCare nació con el propósito de democratizar el acceso a la orientación sobre salud mental mediante el
+            uso de tecnologías de vanguardia. Creemos que la IA puede ser un aliado poderoso para identificar patrones y
+            ofrecer recomendaciones preventivas de manera accesible y privada.
+        </p>
+    </div>
+
+    <div style="margin-top: 3rem;">
+        <a href="/"
+            style="display: inline-block; padding: 1rem 2rem; background: var(--primary-color); color: white; border-radius: 12px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
+            Volver al Inicio
+        </a>
+    </div>
+</div>
+
+<style>
+    div[style*="transition"]:hover {
+        transform: translateY(-10px);
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Historial - MindCare{% endblock %}
+
+{% block content %}
+<h2>Historial de Encuestas</h2>
+<p>Revisa tus resultados anteriores.</p>
+
+<table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+    <thead>
+        <tr style="background: #eee;">
+            <th style="padding: 0.8rem; text-align: left;">Fecha</th>
+            <th style="padding: 0.8rem; text-align: left;">Género</th>
+            <th style="padding: 0.8rem; text-align: left;">Predicción</th>
+            <th style="padding: 0.8rem; text-align: left;">Detalles</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for resp in responses %}
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 0.8rem;">{{ resp.timestamp|date:"d/m/Y H:i" }}</td>
+            <td style="padding: 0.8rem;">{{ resp.get_gender_display }}</td>
+            <td
+                style="padding: 0.8rem; color: {% if resp.prediction == 'Yes' %}var(--danger){% else %}var(--secondary-color){% endif %}; font-weight: bold;">
+                {% if resp.prediction == 'Yes' %}Se Recomienda Tratamiento{% else %}No Requiere Tratamiento{% endif %}
+            </td>
+            <td style="padding: 0.8rem;">
+                <a href="{% url 'results' resp.id %}" style="color: var(--primary-color);">Ver Resultado</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" style="padding: 1rem; text-align: center;">No has realizado ninguna encuesta aún.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

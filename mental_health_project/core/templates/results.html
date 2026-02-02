@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Tu Resultado</h2>
+
+<div class="result-box">
+    <p>Basado en tus respuestas, nuestro análisis de IA sugiere:</p>
+
+    {% if response.prediction == 'Yes' %}
+    <div class="result-positive">
+        Se Recomienda Tratamiento
+    </div>
+    <p>Parece que podrías beneficiarte de ayuda profesional. Por favor considera consultar a un especialista en salud
+        mental.</p>
+    {% else %}
+    <div class="result-negative">
+        No se Requiere Tratamiento Inmediato
+    </div>
+    <p>Tus respuestas sugieren que estás afrontando bien la situación. ¡Mantén tus hábitos saludables!</p>
+    {% endif %}
+
+    <div style="margin-top: 2rem;">
+        <a href="{% url 'survey' %}"><button>Realizar Encuesta de Nuevo</button></a>
+    </div>
+</div>
+{% endblock %}

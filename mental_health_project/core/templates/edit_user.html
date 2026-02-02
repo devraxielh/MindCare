@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Editar Usuario</h2>
+<p>Modificar información del usuario <strong>{{ user_to_edit.username }}</strong></p>
+
+<!-- Display Messages -->
+{% if messages %}
+<div style="margin-bottom: 1.5rem;">
+    {% for message in messages %}
+    <div style="padding: 1rem; border-radius: 4px; margin-bottom: 0.5rem;
+                {% if message.tags == 'error' %}background: #fee; color: #c00; border: 1px solid #fcc;
+                {% elif message.tags == 'success' %}background: #efe; color: #060; border: 1px solid #cfc;
+                {% else %}background: #eef; color: #006; border: 1px solid #ccf;{% endif %}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Username (Read-only) -->
+        <div style="margin-bottom: 1.5rem;">
+            <label style="display: block; font-weight: bold; margin-bottom: 0.5rem;">Nombre de Usuario</label>
+            <input type="text" value="{{ user_to_edit.username }}" disabled
+                style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; background: #f5f5f5;">
+            <small style="color: #666;">El nombre de usuario no se puede cambiar</small>
+        </div>
+
+        <!-- Email -->
+        <div style="margin-bottom: 1.5rem;">
+            <label for="{{ form.email.id_for_label }}"
+                style="display: block; font-weight: bold; margin-bottom: 0.5rem;">
+                {{ form.email.label }}
+            </label>
+            {{ form.email }}
+            {% if form.email.errors %}
+            <div style="color: #c00; margin-top: 0.3rem;">{{ form.email.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- First Name -->
+        <div style="margin-bottom: 1.5rem;">
+            <label for="{{ form.first_name.id_for_label }}"
+                style="display: block; font-weight: bold; margin-bottom: 0.5rem;">
+                {{ form.first_name.label }}
+            </label>
+            {{ form.first_name }}
+            {% if form.first_name.errors %}
+            <div style="color: #c00; margin-top: 0.3rem;">{{ form.first_name.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Last Name -->
+        <div style="margin-bottom: 1.5rem;">
+            <label for="{{ form.last_name.id_for_label }}"
+                style="display: block; font-weight: bold; margin-bottom: 0.5rem;">
+                {{ form.last_name.label }}
+            </label>
+            {{ form.last_name }}
+            {% if form.last_name.errors %}
+            <div style="color: #c00; margin-top: 0.3rem;">{{ form.last_name.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Checkboxes stacked (70% width) -->
+        <div style="margin-bottom: 1.5rem; width: 70%;">
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    {{ form.is_active }}
+                    <span style="font-weight: bold;">{{ form.is_active.label }}</span>
+                </label>
+                {% if form.is_active.errors %}
+                <div style="color: #c00; margin-top: 0.3rem;">{{ form.is_active.errors }}</div>
+                {% endif %}
+                <small
+                    style="color: #666; display: block; margin-left: 1.8rem; margin-top: 0.3rem; word-wrap: break-word;">
+                    Los usuarios inactivos no pueden iniciar sesión
+                </small>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    {{ form.is_superuser }}
+                    <span style="font-weight: bold;">{{ form.is_superuser.label }}</span>
+                </label>
+                {% if form.is_superuser.errors %}
+                <div style="color: #c00; margin-top: 0.3rem;">{{ form.is_superuser.errors }}</div>
+                {% endif %}
+                <small
+                    style="color: #666; display: block; margin-left: 1.8rem; margin-top: 0.3rem; word-wrap: break-word;">
+                    Los administradores tienen acceso completo al sistema
+                </small>
+                {% if user_to_edit.id == request.user.id %}
+                <div style="color: #c60; margin-top: 0.5rem; margin-left: 1.8rem; font-weight: bold;">
+                    ⚠️ No puedes quitarte tu propio rol de administrador
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+
+        <!-- Buttons -->
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit"
+                style="flex: 1; padding: 1rem; background: var(--primary-color); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                💾 Guardar Cambios
+            </button>
+            <a href="{% url 'user_management' %}"
+                style="flex: 1; padding: 1rem; background: #f0f0f0; color: #666; border-radius: 4px; text-decoration: none; text-align: center; font-weight: bold;">
+                ❌ Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
